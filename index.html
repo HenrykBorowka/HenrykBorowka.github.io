@@ -1,123 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Moja strona</title>
+<title>Idle Siłownia</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial;
-            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
-            color: white;
-            text-align: center;
-            padding-top: 60px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(120deg, #141e30, #243b55);
+    color: white;
+    text-align: center;
+    padding-top: 40px;
+}
 
-        /* MENU */
-        .menu {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0,0,0,0.7);
-            padding: 10px;
-        }
+h1 {
+    font-size: 40px;
+}
 
-        .menu a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.box {
+    background: rgba(255,255,255,0.08);
+    width: 320px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+}
 
-        .menu a:hover {
-            color: #00ff99;
-        }
+.btn {
+    padding: 12px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    background: #00ff99;
+}
 
-        h1 {
-            font-size: 45px;
-            margin-top: 30px;
-        }
+.btn:hover {
+    transform: scale(1.05);
+}
 
-        .box {
-            margin: 30px auto;
-            width: 320px;
-            padding: 20px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 25px;
-            background: #00ff99;
-            color: black;
-            font-weight: bold;
-            border-radius: 10px;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            transform: scale(1.1);
-            background: #00cc77;
-        }
-
-        .big-btn {
-            padding: 15px 30px;
-            font-size: 18px;
-        }
-    </style>
+.shop-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+</style>
 </head>
 
 <body>
 
-<!-- MENU -->
-<div class="menu">
-    <a href="#start">Start</a>
-    <a href="#gra">Gra</a>
-    <a href="#kontakt">Kontakt</a>
+<h1>🏋️ Idle Siłownia</h1>
+
+<div class="box">
+    <h2>💪 Siła</h2>
+    <h1 id="power">0</h1>
+
+    <button class="btn" onclick="train()">Trenuj 💥</button>
 </div>
 
-<!-- START -->
-<div id="start" class="box">
-    <h1>Siema 😎</h1>
-    <p>Twoja pierwsza normalna strona</p>
-</div>
+<div class="box">
+    <h2>🛒 Sklep</h2>
 
-<!-- MINI GRA -->
-<div id="gra" class="box">
-    <h2>🎮 Mini gra</h2>
+    <button class="btn shop-btn" onclick="buyUpgrade()">
+        Hantle (+1 za klik) - koszt: <span id="cost">10</span>
+    </button>
 
-    <button class="btn big-btn" onclick="kliknij()">Kliknij mnie</button>
-
-    <p>Wynik:</p>
-    <h2 id="wynik">0</h2>
-
-    <button class="btn" onclick="reset()">Reset</button>
-</div>
-
-<!-- KONTAKT -->
-<div id="kontakt" class="box">
-    <h2>Kontakt</h2>
-    <p>Tu możesz coś wpisać</p>
-    <p>📞 123 456 789</p>
+    <p>Siła / klik: <span id="perClick">1</span></p>
 </div>
 
 <script>
-let licznik = 0;
+let power = 0;
+let perClick = 1;
+let cost = 10;
 
-function kliknij() {
-    licznik++;
-    document.getElementById("wynik").innerHTML = licznik;
+function update() {
+    document.getElementById("power").innerText = power;
+    document.getElementById("perClick").innerText = perClick;
+    document.getElementById("cost").innerText = cost;
 }
 
-function reset() {
-    licznik = 0;
-    document.getElementById("wynik").innerHTML = licznik;
+function train() {
+    power += perClick;
+    update();
 }
+
+function buyUpgrade() {
+    if (power >= cost) {
+        power -= cost;
+        perClick += 1;
+        cost = Math.floor(cost * 1.5);
+        update();
+    } else {
+        alert("Za mało siły 💀");
+    }
+}
+
+update();
 </script>
 
 </body>
