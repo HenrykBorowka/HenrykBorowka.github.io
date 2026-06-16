@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Neon Gym Overload</title>
+<title>Neon Gym RPG</title>
 
 <style>
 body {
     margin: 0;
     font-family: Arial;
-    background: radial-gradient(circle at top, #0f0f0f, #000);
+    background: radial-gradient(circle at top, #0a0a0a, #000);
     color: white;
-    overflow-x: hidden;
 }
 
 /* MENU */
@@ -20,10 +19,9 @@ body {
     display: flex;
     justify-content: center;
     gap: 15px;
-    padding: 12px;
     background: rgba(0,0,0,0.9);
+    padding: 10px;
     border-bottom: 2px solid #ffcc00;
-    z-index: 100;
 }
 
 .menu button {
@@ -34,16 +32,11 @@ body {
     cursor: pointer;
 }
 
-.menu button:hover {
-    color: #ff3b3b;
-}
-
-/* PAGES */
+/* SECTIONS */
 .page {
     display: none;
     padding-top: 80px;
     text-align: center;
-    min-height: 100vh;
 }
 
 .active { display: block; }
@@ -54,137 +47,116 @@ body {
     border: 1px solid rgba(255,204,0,0.3);
     width: 340px;
     margin: 20px auto;
-    padding: 20px;
+    padding: 15px;
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(255,0,0,0.15);
-    transition: 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.02);
 }
 
 /* BUTTONS */
 .btn {
-    padding: 12px 20px;
+    padding: 10px 18px;
     border: none;
-    border-radius: 10px;
-    font-weight: bold;
+    background: linear-gradient(90deg,#ff3b3b,#ffcc00);
     cursor: pointer;
-    background: linear-gradient(90deg, #ff3b3b, #ffcc00);
-    margin: 5px;
-    transition: 0.2s;
-}
-
-.btn:hover {
-    transform: scale(1.1);
-}
-
-/* NEON TEXT */
-.neon {
-    color: #ffcc00;
-    text-shadow: 0 0 10px #ff3b3b, 0 0 20px #ffcc00;
-}
-
-/* XP BAR */
-.bar {
-    width: 100%;
-    height: 12px;
-    background: #222;
+    font-weight: bold;
     border-radius: 10px;
-    overflow: hidden;
 }
 
-.fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #ff3b3b, #ffcc00);
-    transition: 0.3s;
+/* PARTICLE */
+.particle {
+    position: absolute;
+    color: #ffcc00;
+    font-size: 18px;
+    animation: floatUp 0.8s ease-out forwards;
 }
 
-/* FLOAT ANIMATION */
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0px); }
+@keyframes floatUp {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-80px); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- MENU -->
 <div class="menu">
     <button onclick="show('home')">Start</button>
     <button onclick="show('game')">Gra</button>
-    <button onclick="show('shop')">Sklep</button>
-    <button onclick="show('info')">Info</button>
+    <button onclick="show('inventory')">Ekwipunek</button>
+    <button onclick="show('boss')">Boss</button>
+    <button onclick="show('quests')">Questy</button>
+    <button onclick="show('rank')">Ranking</button>
 </div>
 
 <!-- HOME -->
 <div id="home" class="page active">
-    <h1 class="neon">🏋️ NEON GYM OVERLOAD</h1>
+    <h1>🏋️ NEON GYM RPG</h1>
 
     <div class="card">
-        <p>Stwórz swojego koksa 💀💪</p>
-    </div>
-
-    <div class="card">
-        <p>Level: <span id="level">1</span></p>
-        <div class="bar"><div class="fill" id="xpbar"></div></div>
+        <p>Trenuj, bij bossy, zbieraj itemy 💀</p>
     </div>
 </div>
 
 <!-- GAME -->
 <div id="game" class="page">
 
-    <h1 class="neon">💪 TRENING</h1>
+    <h1>💪 TRENING</h1>
 
     <div class="card">
         <h2>Siła: <span id="power">0</span></h2>
-        <button class="btn" onclick="train()">Trenuj 🔥</button>
-        <p>+<span id="perClick">1</span> / klik</p>
+        <button class="btn" onclick="train(event)">TRENUJ 🔥</button>
     </div>
 
     <div class="card">
-        <h3>AFK: <span id="auto">0</span>/s</h3>
+        <h3>XP: <span id="xp">0</span></h3>
+        <h3>Level: <span id="level">1</span></h3>
     </div>
 </div>
 
-<!-- SHOP -->
-<div id="shop" class="page">
+<!-- INVENTORY -->
+<div id="inventory" class="page">
 
-    <h1 class="neon">🛒 SKLEP</h1>
-
-    <div class="card">
-        <button class="btn" onclick="buyClick()">
-            Hantle (+1 klik) - <span id="cost">10</span>
-        </button>
-    </div>
+    <h1>🎒 EKWIPUNEK</h1>
 
     <div class="card">
-        <button class="btn" onclick="buyAuto()">
-            Trener AFK (+1/s) - <span id="autocost">50</span>
-        </button>
-    </div>
-
-    <div class="card">
-        <button class="btn" onclick="prestige()">
-            PRESTIGE 🔥 reset + boost
-        </button>
+        <p id="items">Brak itemów</p>
     </div>
 
 </div>
 
-<!-- INFO -->
-<div id="info" class="page">
+<!-- BOSS -->
+<div id="boss" class="page">
 
-    <h1 class="neon">ℹ️ INFO</h1>
+    <h1>👹 BOSS</h1>
 
     <div class="card">
-        <p>Idle Gym Overload Edition</p>
-        <p>XP + Level + AFK + Prestige</p>
-        <p>Local save + system upgrade</p>
+        <h3>Shadow Gym Boss</h3>
+        <p>HP: <span id="bosshp">50</span></p>
+        <button class="btn" onclick="fight()">ATAK 💥</button>
+    </div>
+
+</div>
+
+<!-- QUESTS -->
+<div id="quests" class="page">
+
+    <h1>📜 QUESTY</h1>
+
+    <div class="card">
+        <p>✔ Zrób 10 treningów (0/10)</p>
+        <p>✔ Pokonaj bossa</p>
+    </div>
+
+</div>
+
+<!-- RANKING -->
+<div id="rank" class="page">
+
+    <h1>📈 RANKING</h1>
+
+    <div class="card">
+        <p>1. Ty - <span id="score">0</span> pkt</p>
+        <p>2. NPC - 9999 pkt</p>
+        <p>3. Bot - 5000 pkt</p>
     </div>
 
 </div>
@@ -193,25 +165,22 @@ body {
 
 /* STATE */
 let power = 0;
-let perClick = 1;
-let cost = 10;
-
-let auto = 0;
-let autoCost = 50;
-
 let xp = 0;
 let level = 1;
+let bossHp = 50;
+let items = [];
+let score = 0;
 
 /* LOAD */
-let save = JSON.parse(localStorage.getItem("gymX"));
+let save = JSON.parse(localStorage.getItem("gymRPG"));
 if(save){
     Object.assign(window, save);
 }
 
 /* SAVE */
 function saveGame(){
-    localStorage.setItem("gymX", JSON.stringify({
-        power, perClick, cost, auto, autoCost, xp, level
+    localStorage.setItem("gymRPG", JSON.stringify({
+        power, xp, level, bossHp, items, score
     }));
 }
 
@@ -221,90 +190,68 @@ function show(id){
     document.getElementById(id).classList.add("active");
 }
 
-/* UPDATE */
-function update(){
-    document.getElementById("power").innerText = power;
-    document.getElementById("perClick").innerText = perClick;
-    document.getElementById("cost").innerText = cost;
-    document.getElementById("autocost").innerText = autoCost;
-    document.getElementById("level").innerText = level;
-    document.getElementById("auto").innerText = auto;
-
-    let percent = (xp / (level * 60)) * 100;
-    document.getElementById("xpbar").style.width = percent + "%";
+/* PARTICLES */
+function particle(x,y){
+    let p = document.createElement("div");
+    p.className = "particle";
+    p.innerText = "💥";
+    p.style.left = x + "px";
+    p.style.top = y + "px";
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),800);
 }
 
-/* XP */
-function addXP(val){
-    xp += val;
-    if(xp >= level * 60){
+/* TRAIN */
+function train(e){
+    power++;
+    xp++;
+    score++;
+
+    particle(e.clientX, e.clientY);
+
+    if(xp >= level * 5){
         xp = 0;
         level++;
-        perClick++;
-        alert("LEVEL UP 💀🔥");
+        dropItem();
     }
-}
 
-/* ACTIONS */
-function train(){
-    power += perClick;
-    addXP(perClick);
     update();
     saveGame();
 }
 
-function buyClick(){
-    if(power >= cost){
-        power -= cost;
-        perClick++;
-        cost = Math.floor(cost * 1.6);
-        update();
-        saveGame();
-    }
+/* DROP ITEM */
+function dropItem(){
+    let drops = ["🥤 Białko", "🧤 Rękawice", "💊 Boost"];
+    let item = drops[Math.floor(Math.random()*drops.length)];
+    items.push(item);
 }
 
-function buyAuto(){
-    if(power >= autoCost){
-        power -= autoCost;
-        auto++;
-        autoCost = Math.floor(autoCost * 1.7);
-        update();
-        saveGame();
+/* BOSS FIGHT */
+function fight(){
+    bossHp -= power > 0 ? power : 1;
+
+    if(bossHp <= 0){
+        alert("Boss pokonany 💀🔥");
+        bossHp = 100;
+        dropItem();
     }
+
+    update();
+    saveGame();
 }
 
-/* PRESTIGE */
-function prestige(){
-    if(level >= 5){
-        power = 0;
-        perClick = 1;
-        cost = 10;
-        auto = 0;
-        autoCost = 50;
-        xp = 0;
-        level = 1;
+/* UPDATE */
+function update(){
+    document.getElementById("power").innerText = power;
+    document.getElementById("xp").innerText = xp;
+    document.getElementById("level").innerText = level;
+    document.getElementById("bosshp").innerText = bossHp;
+    document.getElementById("score").innerText = score;
 
-        alert("PRESTIGE COMPLETE 🔥 BONUS START");
-
-        perClick = 2; // bonus start
-        update();
-        saveGame();
-    } else {
-        alert("Musisz mieć min level 5 💀");
-    }
+    document.getElementById("items").innerText =
+        items.length ? items.join(", ") : "Brak itemów";
 }
 
-/* LOOP */
-setInterval(()=>{
-    if(auto > 0){
-        power += auto;
-        addXP(auto);
-        update();
-        saveGame();
-    }
-}, 1000);
-
-/* INIT */
 update();
 
 </script>
