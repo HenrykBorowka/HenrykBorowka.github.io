@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Neon Gym RPG Full</title>
+<title>Neon Gym RPG EVOLUTION</title>
 
 <style>
 body {
@@ -9,11 +9,9 @@ body {
     font-family: Arial;
     background: radial-gradient(circle at top, #0a0a0a, #000);
     color: white;
-
     user-select: none;
     -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
-    overflow-x: hidden;
 }
 
 .top {
@@ -28,19 +26,18 @@ body {
 }
 
 .card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,204,0,0.3);
     width: 360px;
     margin: 20px auto;
     padding: 15px;
+    background: rgba(255,255,255,0.05);
     border-radius: 15px;
+    border: 1px solid #333;
 }
 
 button {
-    padding: 12px 18px;
+    padding: 10px 16px;
     border: none;
     border-radius: 10px;
-    font-weight: bold;
     cursor: pointer;
     background: linear-gradient(90deg,#ff3b3b,#ffcc00);
 }
@@ -51,13 +48,13 @@ button:active {
 
 .particle {
     position: absolute;
-    animation: floatUp 0.6s ease-out forwards;
     pointer-events: none;
+    animation: floatUp 0.6s forwards;
 }
 
 @keyframes floatUp {
-    from { transform: translateY(0); opacity: 1; }
-    to { transform: translateY(-120px); opacity: 0; }
+    from {transform: translateY(0); opacity:1;}
+    to {transform: translateY(-120px); opacity:0;}
 }
 
 .bar {
@@ -65,7 +62,6 @@ button:active {
     height: 12px;
     background: #222;
     border-radius: 10px;
-    overflow: hidden;
 }
 
 .fill {
@@ -80,166 +76,156 @@ button:active {
 
 <div class="top">
 💪 POWER: <span id="power">0</span> |
-⚡ LEVEL: <span id="level">1</span> |
-🧟 BOSS: <span id="bossName">Slime</span>
+⚡ DMG: <span id="dmg">1</span> |
+💰 GOLD: <span id="gold">0</span> |
+🏆 LVL: <span id="level">1</span>
 </div>
 
 <br><br><br>
 
 <div class="card">
-    <h2>🏋️ TRENING</h2>
-    <button onclick="train(event)">KLIK 💥</button>
-    <p>DMG: <span id="dmg">1</span></p>
+<h2>🏋️ TRENING</h2>
+<button onclick="train(event)">KLIK 💥</button>
 </div>
 
 <div class="card">
-    <h2>🧟 BOSS</h2>
-    <div class="bar"><div class="fill" id="bossBar"></div></div>
-    <p>HP: <span id="bossHp">50</span></p>
+<h2>🧟 BOSS</h2>
+<div class="bar"><div class="fill" id="bossBar"></div></div>
+<p id="bossText"></p>
 </div>
 
 <div class="card">
-    <h2>🎒 INVENTORY</h2>
-    <p id="inv">Brak itemów</p>
+<h2>⚡ SKILL SHOP</h2>
+<button onclick="upgrade()">+1 DMG (10💰)</button>
 </div>
 
 <div class="card">
-    <h2>🏆 ACHIEVEMENTS</h2>
-    <p id="ach">None</p>
+<h2>🏆 ACHIEVEMENTS</h2>
+<p id="ach">Brak</p>
 </div>
+
+<audio id="hit" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5b8c2a7f4a.mp3"></audio>
 
 <script>
 
 /* STATE */
 let power = 0;
-let level = 1;
 let dmg = 1;
-
-let boss = {
-    name: "Slime",
-    hp: 50,
-    max: 50
-};
-
-let inventory = [];
-let achievements = [];
+let gold = 0;
+let level = 1;
 
 let combo = 0;
 let lastClick = 0;
 
-/* BOSSES */
+let boss = {name:"Slime", hp:60, max:60};
+
+let achievements = [];
+
+/* UPDATE */
+function update(){
+
+document.getElementById("power").innerText = power;
+document.getElementById("dmg").innerText = dmg;
+document.getElementById("gold").innerText = gold;
+document.getElementById("level").innerText = level;
+
+document.getElementById("bossText").innerText =
+boss.name + " HP: " + boss.hp;
+
+document.getElementById("bossBar").style.width =
+(boss.hp / boss.max) * 100 + "%";
+
+document.getElementById("ach").innerText =
+achievements.length ? achievements.join(", ") : "Brak";
+
+}
+
+/* PARTICLES */
+function particle(x,y,text){
+let p = document.createElement("div");
+p.className="particle";
+p.innerText=text;
+p.style.left=x+"px";
+p.style.top=y+"px";
+document.body.appendChild(p);
+setTimeout(()=>p.remove(),600);
+}
+
+/* BOSS SYSTEM */
+function nextBoss(){
+
 let bosses = [
-    {name:"Slime", hp:50},
-    {name:"Gym Goblin", hp:120},
-    {name:"Protein Demon", hp:300}
+{name:"Slime",hp:60},
+{name:"Gym Goblin",hp:150},
+{name:"Iron Beast",hp:300}
 ];
 
-/* PARTICLE */
-function particle(x,y,text){
-    let p = document.createElement("div");
-    p.className = "particle";
-    p.innerText = text;
-    p.style.left = x + "px";
-    p.style.top = y + "px";
-    document.body.appendChild(p);
-    setTimeout(()=>p.remove(),600);
+let b = bosses[Math.floor(Math.random()*bosses.length)];
+
+boss = {name:b.name, hp:b.hp, max:b.hp};
+
+gold += 5;
+level++;
+
+}
+
+/* ACHIEVEMENTS */
+function check(){
+
+if(power>=50 && !achievements.includes("💪 Starter")){
+achievements.push("💪 Starter");
+}
+
+if(level>=3 && !achievements.includes("👑 Grinder")){
+achievements.push("👑 Grinder");
+}
+
 }
 
 /* TRAIN */
 function train(e){
 
-    let now = Date.now();
+let now = Date.now();
 
-    if(now - lastClick < 500){
-        combo++;
-    } else combo = 1;
+if(now-lastClick<500) combo++;
+else combo=1;
 
-    lastClick = now;
+lastClick=now;
 
-    let gain = dmg + Math.floor(combo/3);
+let gain = dmg + Math.floor(combo/3);
 
-    boss.hp -= gain;
-    power += gain;
+power += gain;
+boss.hp -= gain;
 
-    particle(e.clientX, e.clientY, "💥+"+gain);
+gold += 1;
 
-    if(boss.hp <= 0){
-        nextBoss();
-    }
-
-    checkAchievements();
-
-    update();
+if(combo>=10){
+gain*=2;
+particle(e.clientX,e.clientY,"🔥 ULTIMATE!");
 }
 
-/* NEXT BOSS */
-function nextBoss(){
-    let idx = Math.floor(Math.random()*bosses.length);
-    boss = {
-        name: bosses[idx].name,
-        hp: bosses[idx].hp,
-        max: bosses[idx].hp
-    };
+document.getElementById("hit").currentTime=0;
+document.getElementById("hit").play();
 
-    level++;
-    dmg++;
+particle(e.clientX,e.clientY,"💥+"+gain);
 
-    let drop = loot();
-    inventory.push(drop);
+if(boss.hp<=0) nextBoss();
 
-    alert("BOSS DOWN 💀 DROP: " + drop);
+check();
+update();
+
 }
 
-/* LOOT SYSTEM */
-function loot(){
-    let items = [
-        "🥤 Protein +1 DMG",
-        "🧤 Gloves +2 DMG",
-        "💊 Rage Boost +3 DMG",
-        "🔥 Legendary Belt +5 DMG"
-    ];
-
-    let item = items[Math.floor(Math.random()*items.length)];
-
-    if(item.includes("+1")) dmg += 1;
-    if(item.includes("+2")) dmg += 2;
-    if(item.includes("+3")) dmg += 3;
-    if(item.includes("+5")) dmg += 5;
-
-    return item;
+/* UPGRADE */
+function upgrade(){
+if(gold>=10){
+gold-=10;
+dmg++;
+}
+update();
 }
 
-/* ACHIEVEMENTS */
-function checkAchievements(){
-    if(power > 50 && !achievements.includes("💪 Starter")){
-        achievements.push("💪 Starter");
-    }
-
-    if(level >= 3 && !achievements.includes("👑 Grinder")){
-        achievements.push("👑 Grinder");
-    }
-}
-
-/* UPDATE */
-function update(){
-
-    document.getElementById("power").innerText = power;
-    document.getElementById("level").innerText = level;
-    document.getElementById("dmg").innerText = dmg;
-
-    document.getElementById("bossName").innerText = boss.name;
-    document.getElementById("bossHp").innerText = boss.hp;
-
-    let percent = (boss.hp / boss.max) * 100;
-    document.getElementById("bossBar").style.width = percent + "%";
-
-    document.getElementById("inv").innerText =
-        inventory.length ? inventory.join(", ") : "Brak itemów";
-
-    document.getElementById("ach").innerText =
-        achievements.length ? achievements.join(", ") : "None";
-}
-
+/* INIT */
 update();
 
 </script>
