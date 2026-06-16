@@ -1,98 +1,263 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Idle Siłownia</title>
+<title>Neon Idle Gym 2.0</title>
 
 <style>
 body {
     margin: 0;
     font-family: Arial;
-    background: linear-gradient(120deg, #141e30, #243b55);
+    background: radial-gradient(circle at top, #1a1a1a, #000);
     color: white;
+}
+
+/* MENU */
+.menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background: rgba(0,0,0,0.85);
+    padding: 12px;
+    border-bottom: 2px solid #ffcc00;
+    z-index: 10;
+}
+
+.menu a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.menu a:hover {
+    color: #ff3b3b;
+}
+
+/* SEKCJE */
+section {
+    display: none;
+    padding-top: 80px;
+    min-height: 100vh;
     text-align: center;
-    padding-top: 40px;
 }
 
-h1 {
-    font-size: 40px;
+.active {
+    display: block;
 }
 
-.box {
-    background: rgba(255,255,255,0.08);
-    width: 320px;
+/* KARTY */
+.card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,204,0,0.4);
+    width: 340px;
     margin: 20px auto;
     padding: 20px;
     border-radius: 15px;
-    backdrop-filter: blur(6px);
+    box-shadow: 0 0 15px rgba(255,0,0,0.2);
 }
 
+/* BUTTONY */
 .btn {
     padding: 12px 20px;
-    margin: 10px;
     border: none;
+    background: linear-gradient(90deg, #ff3b3b, #ffcc00);
+    color: black;
+    font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
-    font-weight: bold;
-    background: #00ff99;
+    transition: 0.2s;
+    margin: 5px;
 }
 
 .btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
-.shop-btn {
+/* NEON */
+.neon {
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ff3b3b, 0 0 20px #ffcc00;
+}
+
+/* PROGRESS BAR */
+.bar {
     width: 100%;
+    height: 15px;
+    background: #222;
+    border-radius: 10px;
+    overflow: hidden;
     margin-top: 10px;
+}
+
+.fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff3b3b, #ffcc00);
 }
 </style>
 </head>
 
 <body>
 
-<h1>🏋️ Idle Siłownia</h1>
-
-<div class="box">
-    <h2>💪 Siła</h2>
-    <h1 id="power">0</h1>
-
-    <button class="btn" onclick="train()">Trenuj 💥</button>
+<div class="menu">
+    <a onclick="show('start')">Start</a>
+    <a onclick="show('gra')">Gra</a>
+    <a onclick="show('info')">Info</a>
 </div>
 
-<div class="box">
-    <h2>🛒 Sklep</h2>
+<!-- START -->
+<section id="start" class="active">
+    <h1 class="neon">🏋️ NEON IDLE GYM</h1>
 
-    <button class="btn shop-btn" onclick="buyUpgrade()">
-        Hantle (+1 za klik) - koszt: <span id="cost">10</span>
-    </button>
+    <div class="card">
+        <p>Wejdź na poziom legendy siłowni 💀💪</p>
+    </div>
 
-    <p>Siła / klik: <span id="perClick">1</span></p>
-</div>
+    <div class="card">
+        <p>Level: <span id="level">1</span></p>
+        <div class="bar"><div class="fill" id="xpbar"></div></div>
+    </div>
+</section>
+
+<!-- GRA -->
+<section id="gra">
+
+    <h1 class="neon">💪 TRENING</h1>
+
+    <div class="card">
+        <h2>Siła: <span id="power">0</span></h2>
+        <button class="btn" onclick="train()">Trenuj 🔥</button>
+        <p>+<span id="perClick">1</span> za klik</p>
+    </div>
+
+    <div class="card">
+        <h3>Sklep 🛒</h3>
+
+        <button class="btn" onclick="buyUpgrade()">
+            Hantle (+1 klik) - koszt <span id="cost">10</span>
+        </button>
+
+        <button class="btn" onclick="buyAuto()">
+            Trener AFK (+1/s) - koszt <span id="autocost">50</span>
+        </button>
+    </div>
+
+</section>
+
+<!-- INFO -->
+<section id="info">
+    <h1 class="neon">ℹ️ INFO</h1>
+
+    <div class="card">
+        <p>Idle Gym 2.0</p>
+        <p>AFK + Level + XP + Sklep</p>
+        <p>LocalStorage zapis 😎</p>
+    </div>
+</section>
 
 <script>
 let power = 0;
 let perClick = 1;
 let cost = 10;
 
+let auto = 0;
+let autoCost = 50;
+
+let xp = 0;
+let level = 1;
+
+/* LOAD SAVE */
+function load() {
+    let save = JSON.parse(localStorage.getItem("gymSave"));
+    if (save) {
+        power = save.power;
+        perClick = save.perClick;
+        cost = save.cost;
+        auto = save.auto;
+        autoCost = save.autoCost;
+        xp = save.xp;
+        level = save.level;
+    }
+}
+load();
+
+/* SAVE */
+function save() {
+    localStorage.setItem("gymSave", JSON.stringify({
+        power, perClick, cost, auto, autoCost, xp, level
+    }));
+}
+
+/* UPDATE UI */
 function update() {
     document.getElementById("power").innerText = power;
     document.getElementById("perClick").innerText = perClick;
     document.getElementById("cost").innerText = cost;
+    document.getElementById("autocost").innerText = autoCost;
+    document.getElementById("level").innerText = level;
+
+    let percent = (xp / (level * 50)) * 100;
+    document.getElementById("xpbar").style.width = percent + "%";
 }
 
+/* TRAIN */
 function train() {
     power += perClick;
+    gainXP(perClick);
     update();
+    save();
 }
 
+/* BUY */
 function buyUpgrade() {
     if (power >= cost) {
         power -= cost;
-        perClick += 1;
-        cost = Math.floor(cost * 1.5);
+        perClick++;
+        cost = Math.floor(cost * 1.6);
         update();
-    } else {
-        alert("Za mało siły 💀");
+        save();
     }
+}
+
+/* AUTO TRAINER */
+function buyAuto() {
+    if (power >= autoCost) {
+        power -= autoCost;
+        auto++;
+        autoCost = Math.floor(autoCost * 1.7);
+        update();
+        save();
+    }
+}
+
+/* XP + LEVEL */
+function gainXP(amount) {
+    xp += amount;
+    if (xp >= level * 50) {
+        xp = 0;
+        level++;
+        perClick++;
+        alert("LEVEL UP 💪");
+    }
+}
+
+/* AUTO LOOP */
+setInterval(() => {
+    if (auto > 0) {
+        power += auto;
+        gainXP(auto);
+        update();
+        save();
+    }
+}, 1000);
+
+/* MENU */
+function show(id) {
+    document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
 }
 
 update();
