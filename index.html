@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>Neon Gym RPG</title>
+<title>Neon Gym Brawl Edition</title>
 
 <style>
 body {
@@ -9,6 +10,8 @@ body {
     font-family: Arial;
     background: radial-gradient(circle at top, #0a0a0a, #000);
     color: white;
+    user-select: none;
+    overflow-x: hidden;
 }
 
 /* MENU */
@@ -22,6 +25,7 @@ body {
     background: rgba(0,0,0,0.9);
     padding: 10px;
     border-bottom: 2px solid #ffcc00;
+    z-index: 100;
 }
 
 .menu button {
@@ -32,7 +36,7 @@ body {
     cursor: pointer;
 }
 
-/* SECTIONS */
+/* PAGES */
 .page {
     display: none;
     padding-top: 80px;
@@ -41,7 +45,7 @@ body {
 
 .active { display: block; }
 
-/* CARDS */
+/* CARD */
 .card {
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,204,0,0.3);
@@ -51,27 +55,41 @@ body {
     border-radius: 15px;
 }
 
-/* BUTTONS */
+/* BUTTON */
 .btn {
-    padding: 10px 18px;
+    padding: 12px 20px;
     border: none;
     background: linear-gradient(90deg,#ff3b3b,#ffcc00);
     cursor: pointer;
     font-weight: bold;
     border-radius: 10px;
+    margin: 5px;
 }
 
-/* PARTICLE */
+/* PARTICLES */
 .particle {
     position: absolute;
-    color: #ffcc00;
-    font-size: 18px;
-    animation: floatUp 0.8s ease-out forwards;
+    font-size: 20px;
+    animation: floatUp 0.7s ease-out forwards;
+    pointer-events: none;
 }
 
 @keyframes floatUp {
     from { transform: translateY(0); opacity: 1; }
-    to { transform: translateY(-80px); opacity: 0; }
+    to { transform: translateY(-100px); opacity: 0; }
+}
+
+/* SHAKE */
+.shake {
+    animation: shake 0.2s;
+}
+
+@keyframes shake {
+    0% { transform: translate(0,0); }
+    25% { transform: translate(5px,5px); }
+    50% { transform: translate(-5px,5px); }
+    75% { transform: translate(5px,-5px); }
+    100% { transform: translate(0,0); }
 }
 </style>
 </head>
@@ -79,177 +97,93 @@ body {
 <body>
 
 <div class="menu">
-    <button onclick="show('home')">Start</button>
     <button onclick="show('game')">Gra</button>
-    <button onclick="show('inventory')">Ekwipunek</button>
-    <button onclick="show('boss')">Boss</button>
-    <button onclick="show('quests')">Questy</button>
-    <button onclick="show('rank')">Ranking</button>
-</div>
-
-<!-- HOME -->
-<div id="home" class="page active">
-    <h1>🏋️ NEON GYM RPG</h1>
-
-    <div class="card">
-        <p>Trenuj, bij bossy, zbieraj itemy 💀</p>
-    </div>
 </div>
 
 <!-- GAME -->
-<div id="game" class="page">
+<div id="game" class="page active">
 
-    <h1>💪 TRENING</h1>
+    <h1>💪 NEON GYM BRAWL</h1>
 
     <div class="card">
         <h2>Siła: <span id="power">0</span></h2>
-        <button class="btn" onclick="train(event)">TRENUJ 🔥</button>
-    </div>
+        <h3>Combo: <span id="combo">0</span> 🔥</h3>
 
-    <div class="card">
-        <h3>XP: <span id="xp">0</span></h3>
-        <h3>Level: <span id="level">1</span></h3>
-    </div>
-</div>
-
-<!-- INVENTORY -->
-<div id="inventory" class="page">
-
-    <h1>🎒 EKWIPUNEK</h1>
-
-    <div class="card">
-        <p id="items">Brak itemów</p>
+        <button class="btn" onclick="train(event)">TRENUJ 💥</button>
     </div>
 
 </div>
 
-<!-- BOSS -->
-<div id="boss" class="page">
-
-    <h1>👹 BOSS</h1>
-
-    <div class="card">
-        <h3>Shadow Gym Boss</h3>
-        <p>HP: <span id="bosshp">50</span></p>
-        <button class="btn" onclick="fight()">ATAK 💥</button>
-    </div>
-
-</div>
-
-<!-- QUESTS -->
-<div id="quests" class="page">
-
-    <h1>📜 QUESTY</h1>
-
-    <div class="card">
-        <p>✔ Zrób 10 treningów (0/10)</p>
-        <p>✔ Pokonaj bossa</p>
-    </div>
-
-</div>
-
-<!-- RANKING -->
-<div id="rank" class="page">
-
-    <h1>📈 RANKING</h1>
-
-    <div class="card">
-        <p>1. Ty - <span id="score">0</span> pkt</p>
-        <p>2. NPC - 9999 pkt</p>
-        <p>3. Bot - 5000 pkt</p>
-    </div>
-
-</div>
+<!-- AUDIO -->
+<audio id="hitSound" src="https://www.myinstants.com/media/sounds/punch.mp3"></audio>
 
 <script>
 
 /* STATE */
 let power = 0;
-let xp = 0;
-let level = 1;
-let bossHp = 50;
-let items = [];
-let score = 0;
-
-/* LOAD */
-let save = JSON.parse(localStorage.getItem("gymRPG"));
-if(save){
-    Object.assign(window, save);
-}
-
-/* SAVE */
-function saveGame(){
-    localStorage.setItem("gymRPG", JSON.stringify({
-        power, xp, level, bossHp, items, score
-    }));
-}
-
-/* NAV */
-function show(id){
-    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
-}
-
-/* PARTICLES */
-function particle(x,y){
-    let p = document.createElement("div");
-    p.className = "particle";
-    p.innerText = "💥";
-    p.style.left = x + "px";
-    p.style.top = y + "px";
-    document.body.appendChild(p);
-    setTimeout(()=>p.remove(),800);
-}
-
-/* TRAIN */
-function train(e){
-    power++;
-    xp++;
-    score++;
-
-    particle(e.clientX, e.clientY);
-
-    if(xp >= level * 5){
-        xp = 0;
-        level++;
-        dropItem();
-    }
-
-    update();
-    saveGame();
-}
-
-/* DROP ITEM */
-function dropItem(){
-    let drops = ["🥤 Białko", "🧤 Rękawice", "💊 Boost"];
-    let item = drops[Math.floor(Math.random()*drops.length)];
-    items.push(item);
-}
-
-/* BOSS FIGHT */
-function fight(){
-    bossHp -= power > 0 ? power : 1;
-
-    if(bossHp <= 0){
-        alert("Boss pokonany 💀🔥");
-        bossHp = 100;
-        dropItem();
-    }
-
-    update();
-    saveGame();
-}
+let combo = 0;
+let lastClick = 0;
 
 /* UPDATE */
 function update(){
     document.getElementById("power").innerText = power;
-    document.getElementById("xp").innerText = xp;
-    document.getElementById("level").innerText = level;
-    document.getElementById("bosshp").innerText = bossHp;
-    document.getElementById("score").innerText = score;
+    document.getElementById("combo").innerText = combo;
+}
 
-    document.getElementById("items").innerText =
-        items.length ? items.join(", ") : "Brak itemów";
+/* SHAKE */
+function shake(){
+    document.body.classList.add("shake");
+    setTimeout(()=>document.body.classList.remove("shake"),200);
+}
+
+/* PARTICLE */
+function particle(x,y,text){
+    let p = document.createElement("div");
+    p.className = "particle";
+    p.innerText = text;
+    p.style.left = x + "px";
+    p.style.top = y + "px";
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),700);
+}
+
+/* SOUND */
+function playSound(){
+    let s = document.getElementById("hitSound");
+    s.currentTime = 0;
+    s.play();
+}
+
+/* TRAIN */
+function train(e){
+
+    let now = Date.now();
+
+    // combo system
+    if(now - lastClick < 700){
+        combo++;
+    } else {
+        combo = 1;
+    }
+
+    lastClick = now;
+
+    let gain = 1 + Math.floor(combo / 3);
+
+    power += gain;
+
+    // effects
+    particle(e.clientX, e.clientY, "💥+" + gain);
+    shake();
+    playSound();
+
+    update();
+}
+
+/* NAV */
+function show(id){
+    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
 }
 
 update();
