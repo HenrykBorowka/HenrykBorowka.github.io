@@ -2,48 +2,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Neon Gym Brawl Edition</title>
+<title>Neon Gym Ultra Fixed</title>
 
 <style>
+
+/* GLOBAL FIX (NO SELECTION / NO BUGS) */
 body {
     margin: 0;
     font-family: Arial;
     background: radial-gradient(circle at top, #0a0a0a, #000);
     color: white;
+
     user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
     overflow-x: hidden;
 }
 
-/* MENU */
-.menu {
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* TOP */
+.top {
     position: fixed;
     top: 0;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    background: rgba(0,0,0,0.9);
+    text-align: center;
     padding: 10px;
+    background: rgba(0,0,0,0.85);
     border-bottom: 2px solid #ffcc00;
     z-index: 100;
 }
-
-.menu button {
-    background: none;
-    border: none;
-    color: #ffcc00;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* PAGES */
-.page {
-    display: none;
-    padding-top: 80px;
-    text-align: center;
-}
-
-.active { display: block; }
 
 /* CARD */
 .card {
@@ -56,6 +47,15 @@ body {
 }
 
 /* BUTTON */
+button {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    outline: none;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
 .btn {
     padding: 12px 20px;
     border: none;
@@ -63,59 +63,48 @@ body {
     cursor: pointer;
     font-weight: bold;
     border-radius: 10px;
-    margin: 5px;
+}
+
+/* CLICK FEEL */
+button:active {
+    transform: scale(0.95);
 }
 
 /* PARTICLES */
 .particle {
     position: absolute;
-    font-size: 20px;
-    animation: floatUp 0.7s ease-out forwards;
+    font-size: 18px;
+    animation: floatUp 0.6s ease-out forwards;
     pointer-events: none;
 }
 
 @keyframes floatUp {
     from { transform: translateY(0); opacity: 1; }
-    to { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(-120px); opacity: 0; }
 }
 
-/* SHAKE */
-.shake {
-    animation: shake 0.2s;
-}
-
-@keyframes shake {
-    0% { transform: translate(0,0); }
-    25% { transform: translate(5px,5px); }
-    50% { transform: translate(-5px,5px); }
-    75% { transform: translate(5px,-5px); }
-    100% { transform: translate(0,0); }
-}
 </style>
 </head>
 
 <body>
 
-<div class="menu">
-    <button onclick="show('game')">Gra</button>
+<div class="top">
+💪 NEON GYM ULTRA | Power: <span id="power">0</span> | Combo: <span id="combo">0</span> | Boss: <span id="boss">100</span>
 </div>
 
-<!-- GAME -->
-<div id="game" class="page active">
+<br><br><br>
 
-    <h1>💪 NEON GYM BRAWL</h1>
-
-    <div class="card">
-        <h2>Siła: <span id="power">0</span></h2>
-        <h3>Combo: <span id="combo">0</span> 🔥</h3>
-
-        <button class="btn" onclick="train(event)">TRENUJ 💥</button>
-    </div>
-
+<div class="card">
+    <h2>🏋️ TRENING</h2>
+    <button class="btn" onclick="train(event)">KLIKNIJ 💥</button>
 </div>
 
-<!-- AUDIO -->
-<audio id="hitSound" src="https://www.myinstants.com/media/sounds/punch.mp3"></audio>
+<div class="card">
+    <h2>👹 BOSS</h2>
+    <p>HP: <span id="bossHp">100</span></p>
+</div>
+
+<audio id="hit" src="https://www.myinstants.com/media/sounds/punch.mp3"></audio>
 
 <script>
 
@@ -124,43 +113,47 @@ let power = 0;
 let combo = 0;
 let lastClick = 0;
 
+let boss = 100;
+
 /* UPDATE */
 function update(){
     document.getElementById("power").innerText = power;
     document.getElementById("combo").innerText = combo;
+    document.getElementById("boss").innerText = boss;
+    document.getElementById("bossHp").innerText = boss;
 }
 
-/* SHAKE */
+/* SHAKE (IMPROVED) */
 function shake(){
-    document.body.classList.add("shake");
-    setTimeout(()=>document.body.classList.remove("shake"),200);
+    let intensity = Math.min(combo, 10);
+
+    document.body.style.transform = `translate(${intensity}px, ${intensity}px)`;
+
+    setTimeout(()=>{
+        document.body.style.transform = "translate(0,0)";
+    }, 70);
 }
 
-/* PARTICLE */
+/* PARTICLES (IMPROVED) */
 function particle(x,y,text){
     let p = document.createElement("div");
     p.className = "particle";
     p.innerText = text;
     p.style.left = x + "px";
     p.style.top = y + "px";
-    document.body.appendChild(p);
-    setTimeout(()=>p.remove(),700);
-}
+    p.style.fontSize = (16 + combo) + "px";
 
-/* SOUND */
-function playSound(){
-    let s = document.getElementById("hitSound");
-    s.currentTime = 0;
-    s.play();
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),600);
 }
 
 /* TRAIN */
 function train(e){
+    if(e) e.preventDefault();
 
     let now = Date.now();
 
-    // combo system
-    if(now - lastClick < 700){
+    if(now - lastClick < 600){
         combo++;
     } else {
         combo = 1;
@@ -171,21 +164,23 @@ function train(e){
     let gain = 1 + Math.floor(combo / 3);
 
     power += gain;
+    boss -= gain;
 
-    // effects
+    if(boss <= 0){
+        boss = 100;
+        alert("BOSS DOWN 💀🔥");
+    }
+
     particle(e.clientX, e.clientY, "💥+" + gain);
     shake();
-    playSound();
+
+    document.getElementById("hit").currentTime = 0;
+    document.getElementById("hit").play();
 
     update();
 }
 
-/* NAV */
-function show(id){
-    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
-}
-
+/* INIT */
 update();
 
 </script>
