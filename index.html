@@ -1,43 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Moja strona</title>
+    <title>Moja kozacka strona</title>
 
     <style>
         body {
-            background-color: #1e1e1e;
-            color: white;
+            margin: 0;
             font-family: Arial;
+            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            color: white;
             text-align: center;
-            margin-top: 50px;
         }
 
         h1 {
-            color: #00ff99;
-            font-size: 40px;
+            margin-top: 60px;
+            font-size: 50px;
+            animation: fadeIn 2s ease-in-out;
         }
 
         p {
-            font-size: 18px;
+            font-size: 20px;
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out forwards;
+            animation-delay: 1s;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            background: #00ff99;
+            color: black;
+            font-weight: bold;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #00cc77;
+            transform: scale(1.1);
         }
 
         .box {
-            background: #2c2c2c;
-            padding: 20px;
-            margin: 20px auto;
+            margin: 40px auto;
             width: 300px;
-            border-radius: 10px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            animation: slideUp 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes slideUp {
+            from {transform: translateY(50px); opacity: 0;}
+            to {transform: translateY(0); opacity: 1;}
         }
     </style>
-
 </head>
 
 <body>
 
-<h1>Siema!</h1>
+<h1>🎣 Wędkarska strona Piotrka</h1>
+
+<p>Tu się dzieje więcej niż nad Bzurą o świcie 😎</p>
+
+<a class="btn" href="https://www.youtube.com" target="_blank">Kliknij mnie</a>
 
 <div class="box">
-    <p>Moja pierwsza fajna strona 😎</p>
+    <h2>🔥 Rekordy</h2>
+    <p>Karp: 12 kg</p>
+    <p>Szczupak: 6 kg</p>
 </div>
 
 </body>
