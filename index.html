@@ -3,1991 +3,531 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Pora na Porządek | Koszenie, Odśnieżanie, Sprzątanie Ełk i Augustów</title>
-
-<meta name="description" content="Koszenie trawy, odśnieżanie, sprzątanie działek, garaży i terenów zielonych. Regularna opieka nad działkami podczas nieobecności właścicieli. Ełk, Augustów, Kalinowo i okolice.">
-<meta name="keywords" content="koszenie trawy Ełk, odśnieżanie Ełk, sprzątanie działek Augustów, koszenie działek Kalinowo, Pora na Porządek, usługi porządkowe">
-<meta name="theme-color" content="#101712">
+<meta name="description" content="Koszenie trawy, odśnieżanie, sprzątanie działek, garaży i terenów zielonych. Ełk, Augustów, Kalinowo i okolice.">
+<meta name="keywords" content="koszenie trawy Ełk, odśnieżanie Ełk, sprzątanie działek Augustów, koszenie działek Kalinowo, Pora na Porządek">
+<meta name="theme-color" content="#0f1a12">
 <meta property="og:title" content="Pora na Porządek | Czysto o każdej porze">
-<meta property="og:description" content="Koszenie, odśnieżanie, grabienie liści, sprzątanie garaży i regularna opieka nad działkami.">
+<meta property="og:description" content="Koszenie, odśnieżanie, grabienie liści, sprzątanie garaży i opieka nad działkami.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="nasze%20logo.png">
-
 <link rel="icon" href="nasze%20logo.png">
-<link rel="preconnect" href="https://images.unsplash.com">
-<link rel="preconnect" href="https://www.google.com">
 
 <style>
 :root{
---bg:#070b08;
---bg2:#101712;
---card:#121d16;
---card2:#17251c;
---green:#4ade80;
---green2:#22c55e;
---darkgreen:#0f3d24;
---text:#f4fff7;
---muted:#b8c9bd;
---gold:#ffd166;
---red:#fb7185;
---blue:#60a5fa;
---line:rgba(255,255,255,.09);
---shadow:0 25px 80px rgba(0,0,0,.45);
+  --bg:#071008;
+  --bg2:#0e1711;
+  --card:#121f16;
+  --card2:#17281d;
+  --green:#4ade80;
+  --green2:#22c55e;
+  --text:#f3fff6;
+  --muted:#b8c9bd;
+  --line:rgba(255,255,255,.10);
+  --shadow:0 22px 65px rgba(0,0,0,.38);
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
-
-html{font-size:16px;}
-
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
 body{
-font-family:Arial, Helvetica, sans-serif;
-background:
-radial-gradient(circle at 15% 10%, rgba(74,222,128,.16), transparent 28%),
-radial-gradient(circle at 85% 5%, rgba(34,197,94,.12), transparent 24%),
-linear-gradient(180deg,#061008,#0b100d 45%,#070a08);
-color:var(--text);
-overflow-x:hidden;
+  font-family:Arial, Helvetica, sans-serif;
+  background:radial-gradient(circle at 15% 0%,rgba(74,222,128,.13),transparent 28%),linear-gradient(180deg,#061008,#090d0a 55%,#050705);
+  color:var(--text);
+  overflow-x:hidden;
 }
-
-body::before{
-content:"";
-position:fixed;
-inset:0;
-pointer-events:none;
-background-image:
-linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-background-size:42px 42px;
-mask-image:linear-gradient(to bottom, rgba(0,0,0,.7), transparent 75%);
-z-index:-1;
-}
-
-body::-webkit-scrollbar{width:10px;}
-body::-webkit-scrollbar-track{background:#050805;}
-body::-webkit-scrollbar-thumb{background:linear-gradient(var(--green),var(--green2));border-radius:30px;}
-
 a{color:inherit;}
 
 .topbar{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-z-index:1000;
-padding:16px 7%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px;
-background:rgba(5,10,6,.62);
-backdrop-filter:blur(18px);
-border-bottom:1px solid rgba(255,255,255,.08);
-transition:.3s;
+  position:fixed;
+  top:0;left:0;width:100%;z-index:1000;
+  padding:14px 7%;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  background:rgba(5,10,6,.82);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
-
-.topbar.scrolled{
-padding:10px 7%;
-background:rgba(5,10,6,.9);
-box-shadow:0 10px 40px rgba(0,0,0,.35);
-}
-
-.brand{
-display:flex;
-align-items:center;
-gap:12px;
-text-decoration:none;
-font-weight:900;
-letter-spacing:.3px;
-}
-
-.brand img{
-width:46px;
-height:46px;
-object-fit:cover;
-border-radius:14px;
-box-shadow:0 0 20px rgba(74,222,128,.25);
-}
-
-.brand span{font-size:1.05rem;}
-
-.nav{
-display:flex;
-align-items:center;
-gap:16px;
-}
-
-.nav a{
-text-decoration:none;
-color:var(--muted);
-font-weight:800;
-font-size:.92rem;
-transition:.2s;
-white-space:nowrap;
-}
-
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:950;}
+.brand img{width:44px;height:44px;object-fit:cover;border-radius:13px;box-shadow:0 0 20px rgba(74,222,128,.22);}
+.brand span{font-size:1.02rem;}
+.nav{display:flex;align-items:center;gap:15px;}
+.nav a{text-decoration:none;color:var(--muted);font-weight:850;font-size:.92rem;white-space:nowrap;transition:.2s;}
 .nav a:hover{color:var(--green);}
-
-.nav-call{
-padding:12px 18px;
-border-radius:999px;
-background:linear-gradient(135deg,var(--green2),#15803d);
-color:white !important;
-box-shadow:0 0 28px rgba(34,197,94,.32);
-}
-
-.mobile-menu{
-display:none;
-border:1px solid rgba(255,255,255,.12);
-background:rgba(255,255,255,.06);
-color:white;
-padding:11px 14px;
-border-radius:14px;
-font-weight:900;
-cursor:pointer;
-}
+.nav-call{padding:11px 16px;border-radius:999px;background:linear-gradient(135deg,var(--green),var(--green2));color:#041008!important;box-shadow:0 0 28px rgba(34,197,94,.28);}
+.mobile-menu{display:none;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:white;padding:10px 13px;border-radius:14px;font-weight:900;cursor:pointer;}
 
 .hero{
-min-height:100vh;
-position:relative;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-padding:120px 7% 80px;
-background:
-linear-gradient(rgba(2,8,4,.74),rgba(2,8,4,.82)),
-url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=80");
-background-size:cover;
-background-position:center;
-}
-
-.hero::before{
-content:"";
-position:absolute;
-width:620px;
-height:620px;
-top:8%;
-left:-180px;
-background:rgba(74,222,128,.18);
-border-radius:50%;
-filter:blur(95px);
-animation:blob 11s infinite ease-in-out;
-}
-
-.hero::after{
-content:"";
-position:absolute;
-width:480px;
-height:480px;
-right:-120px;
-bottom:10%;
-background:rgba(255,209,102,.08);
-border-radius:50%;
-filter:blur(90px);
-animation:blob2 14s infinite ease-in-out;
-}
-
-@keyframes blob{
-0%,100%{transform:translate(0,0) scale(1);}
-50%{transform:translate(80px,70px) scale(1.15);}
-}
-
-@keyframes blob2{
-0%,100%{transform:translate(0,0) scale(1);}
-50%{transform:translate(-70px,-60px) scale(1.2);}
-}
-
-.hero-wrap{
-position:relative;
-z-index:2;
-max-width:1200px;
-width:100%;
-display:grid;
-grid-template-columns:1.1fr .9fr;
-align-items:center;
-gap:56px;
-}
-
-.hero-content{animation:fadeUp .9s ease both;}
-
-.eyebrow{
-display:inline-flex;
-align-items:center;
-gap:9px;
-padding:10px 14px;
-border:1px solid rgba(74,222,128,.25);
-background:rgba(74,222,128,.08);
-border-radius:999px;
-color:#d9ffe2;
-font-weight:900;
-font-size:.95rem;
-margin-bottom:22px;
-}
-
-h1{
-font-size:clamp(2.8rem,7vw,6.3rem);
-line-height:.95;
-letter-spacing:-3px;
-margin-bottom:18px;
-}
-
-h1 span{
-color:var(--green);
-text-shadow:0 0 30px rgba(74,222,128,.35);
-}
-
-.slogan{
-font-size:clamp(1.2rem,2vw,1.7rem);
-color:#d7ffdf;
-font-weight:900;
-margin-bottom:24px;
-}
-
-.hero-text{
-font-size:1.13rem;
-line-height:1.9;
-color:var(--muted);
-max-width:760px;
-margin-bottom:34px;
-}
-
-.hero-actions{
-display:flex;
-flex-wrap:wrap;
-gap:16px;
-align-items:center;
-}
-
-.btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-padding:17px 26px;
-border-radius:999px;
-text-decoration:none;
-font-weight:950;
-transition:.25s;
-border:1px solid transparent;
-cursor:pointer;
-}
-
-.btn-primary{
-background:linear-gradient(135deg,var(--green),var(--green2));
-color:#041008;
-box-shadow:0 0 34px rgba(74,222,128,.34);
-animation:phoneGlow 2.6s infinite ease-in-out;
-}
-
-.btn-primary:hover{
-transform:translateY(-4px) scale(1.02);
-box-shadow:0 0 48px rgba(74,222,128,.52);
-}
-
-.btn-secondary{
-background:rgba(255,255,255,.06);
-border-color:rgba(255,255,255,.12);
-color:var(--text);
-}
-
-.btn-secondary:hover{
-background:rgba(255,255,255,.1);
-transform:translateY(-4px);
-}
-
-.btn-whatsapp{
-background:linear-gradient(135deg,#25D366,#128C7E);
-color:white;
-box-shadow:0 0 34px rgba(37,211,102,.28);
-}
-
-.btn-messenger{
-background:linear-gradient(135deg,#60a5fa,#2563eb);
-color:white;
-box-shadow:0 0 34px rgba(96,165,250,.25);
-}
-
-@keyframes phoneGlow{
-0%,100%{box-shadow:0 0 18px rgba(74,222,128,.25);}
-50%{box-shadow:0 0 44px rgba(74,222,128,.58);}
-}
-
-.hero-badges{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-margin-top:28px;
-}
-
-.hero-badges span{
-padding:10px 13px;
-border-radius:999px;
-background:rgba(255,255,255,.07);
-border:1px solid rgba(255,255,255,.09);
-color:#dceee0;
-font-size:.92rem;
-font-weight:800;
-}
-
-.logo-card{
-position:relative;
-justify-self:center;
-width:min(430px,100%);
-padding:24px;
-border-radius:34px;
-background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.03));
-border:1px solid rgba(255,255,255,.13);
-box-shadow:var(--shadow);
-animation:floatLogo 5s infinite ease-in-out;
-}
-
-.logo-card::before{
-content:"";
-position:absolute;
-inset:-2px;
-border-radius:36px;
-background:linear-gradient(135deg,rgba(74,222,128,.55),transparent,rgba(255,209,102,.25));
-z-index:-1;
-filter:blur(16px);
-opacity:.65;
-}
-
-.logo-card img{
-width:100%;
-display:block;
-border-radius:26px;
-}
-
-.logo-mini-note{
-position:absolute;
-left:22px;
-right:22px;
-bottom:-20px;
-padding:13px 16px;
-border-radius:18px;
-background:rgba(4,12,6,.86);
-border:1px solid rgba(74,222,128,.2);
-box-shadow:0 15px 45px rgba(0,0,0,.35);
-font-weight:900;
-color:#eaffe9;
-text-align:center;
-}
-
-@keyframes floatLogo{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-14px);}
-}
-
-.section{
-padding:96px 7%;
-position:relative;
-}
-
-.section-inner{
-max-width:1200px;
-margin:0 auto;
-}
-
-.section-title{
-text-align:center;
-margin-bottom:54px;
-}
-
-.section-title small{
-display:inline-block;
-color:var(--green);
-font-weight:950;
-letter-spacing:1.2px;
-text-transform:uppercase;
-margin-bottom:12px;
-}
-
-.section-title h2{
-font-size:clamp(2.1rem,4vw,3.8rem);
-line-height:1.05;
-letter-spacing:-1px;
-}
-
-.section-title p{
-max-width:760px;
-margin:18px auto 0;
-color:var(--muted);
-line-height:1.8;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:22px;
-}
-
-.card{
-position:relative;
-padding:28px;
-border-radius:26px;
-background:
-linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025)),
-var(--card);
-border:1px solid var(--line);
-box-shadow:0 16px 50px rgba(0,0,0,.22);
-overflow:hidden;
-transition:.28s;
-}
-
-.card::after{
-content:"";
-position:absolute;
-width:130px;
-height:130px;
-right:-55px;
-top:-55px;
-background:rgba(74,222,128,.11);
-border-radius:50%;
-filter:blur(4px);
-transition:.28s;
-}
-
-.card:hover{
-transform:translateY(-9px);
-border-color:rgba(74,222,128,.45);
-box-shadow:0 22px 70px rgba(0,0,0,.35);
-}
-
-.card:hover::after{
-transform:scale(1.35);
-background:rgba(74,222,128,.18);
-}
-
-.icon{
-font-size:2.4rem;
-margin-bottom:17px;
-display:inline-block;
-}
-
-.card h3{
-font-size:1.32rem;
-margin-bottom:12px;
-}
-
-.card p, .card li{
-color:var(--muted);
-line-height:1.78;
-}
-
-.card ul{
-margin-top:14px;
-padding-left:20px;
-}
-
-.season-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:22px;
-}
-
-.season-card{
-padding:30px;
-border-radius:30px;
-background:
-linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.026)),
-var(--card2);
-border:1px solid rgba(255,255,255,.1);
-box-shadow:0 18px 55px rgba(0,0,0,.22);
-transition:.28s;
-position:relative;
-overflow:hidden;
-}
-
-.season-card:hover{
-transform:translateY(-8px);
-border-color:rgba(74,222,128,.35);
-}
-
-.season-card::before{
-content:"";
-position:absolute;
-inset:0;
-background:radial-gradient(circle at top right,rgba(74,222,128,.16),transparent 35%);
-pointer-events:none;
-}
-
-.season-head{
-display:flex;
-align-items:flex-start;
-justify-content:space-between;
-gap:16px;
-margin-bottom:18px;
-position:relative;
-}
-
-.season-head h3{
-font-size:1.65rem;
-}
-
-.season-months{
-padding:9px 12px;
-border-radius:999px;
-background:rgba(74,222,128,.1);
-border:1px solid rgba(74,222,128,.2);
-font-weight:900;
-color:#dffff0;
-white-space:nowrap;
-font-size:.88rem;
-}
-
-.season-card p{
-color:var(--muted);
-line-height:1.8;
-margin-bottom:16px;
-position:relative;
-}
-
-.season-card ul{
-position:relative;
-display:grid;
-gap:9px;
-list-style:none;
-}
-
-.season-card li{
-color:#e9fff0;
-padding:10px 12px;
-border-radius:14px;
-background:rgba(255,255,255,.045);
-border:1px solid rgba(255,255,255,.07);
-}
-
-.care-box{
-margin-top:22px;
-padding:34px;
-border-radius:30px;
-background:
-radial-gradient(circle at 12% 20%,rgba(255,209,102,.16),transparent 28%),
-linear-gradient(145deg,rgba(74,222,128,.12),rgba(255,255,255,.035));
-border:1px solid rgba(255,209,102,.18);
-display:grid;
-grid-template-columns:1.05fr .95fr;
-gap:22px;
-align-items:center;
-}
-
-.care-box h3{
-font-size:2rem;
-margin-bottom:12px;
-}
-
-.care-box p{
-color:var(--muted);
-line-height:1.85;
-}
-
-.care-list{
-display:grid;
-gap:10px;
-}
-
-.care-list span{
-display:block;
-padding:13px 15px;
-border-radius:16px;
-background:rgba(255,255,255,.055);
-border:1px solid rgba(255,255,255,.08);
-font-weight:850;
-}
-
-.why-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:16px;
-}
-
-.why-box{
-padding:22px 20px;
-border-radius:22px;
-background:linear-gradient(145deg,rgba(74,222,128,.11),rgba(255,255,255,.035));
-border:1px solid rgba(74,222,128,.16);
-font-weight:900;
-color:#effff2;
-transition:.25s;
-}
-
-.why-box:hover{
-transform:translateY(-6px);
-background:linear-gradient(145deg,rgba(74,222,128,.18),rgba(255,255,255,.05));
-}
-
-.price-table-wrap{
-overflow-x:auto;
-border-radius:28px;
-border:1px solid rgba(255,255,255,.1);
-box-shadow:0 18px 55px rgba(0,0,0,.25);
-}
-
-.price-table{
-width:100%;
-border-collapse:collapse;
-min-width:760px;
-background:rgba(255,255,255,.035);
-}
-
-.price-table th,
-.price-table td{
-padding:18px;
-border-bottom:1px solid rgba(255,255,255,.08);
-text-align:left;
-vertical-align:top;
-}
-
-.price-table th{
-background:rgba(74,222,128,.12);
-color:#eaffef;
-font-size:1rem;
-}
-
-.price-table td{
-color:var(--muted);
-line-height:1.6;
-}
-
-.price-table td strong{
-color:white;
-font-size:1.06rem;
-}
-
-.price-note{
-margin-top:18px;
-color:var(--muted);
-line-height:1.8;
-text-align:center;
-}
-
-.calculator{
-display:grid;
-grid-template-columns:1fr .9fr;
-gap:24px;
-align-items:stretch;
-}
-
-.calc-panel,
-.calc-result,
-.form-card{
-padding:30px;
-border-radius:30px;
-background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
-border:1px solid rgba(255,255,255,.1);
-box-shadow:0 18px 55px rgba(0,0,0,.22);
-}
-
-.form-group{
-display:grid;
-gap:8px;
-margin-bottom:16px;
-}
-
-.form-group label{
-font-weight:900;
-color:#effff2;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea{
-width:100%;
-padding:15px 16px;
-border-radius:16px;
-border:1px solid rgba(255,255,255,.12);
-background:rgba(0,0,0,.22);
-color:white;
-outline:none;
-font-size:1rem;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-border-color:rgba(74,222,128,.55);
-box-shadow:0 0 0 4px rgba(74,222,128,.08);
-}
-
-.form-group textarea{
-min-height:125px;
-resize:vertical;
-}
-
-.calc-result{
-display:flex;
-flex-direction:column;
-justify-content:center;
-text-align:center;
-}
-
-.calc-result small{
-color:var(--muted);
-font-weight:900;
-text-transform:uppercase;
-letter-spacing:1px;
-}
-
-.calc-result strong{
-display:block;
-font-size:clamp(2.5rem,5vw,4.4rem);
-color:var(--green);
-margin:12px 0;
-text-shadow:0 0 28px rgba(74,222,128,.25);
-}
-
-.calc-result p{
-color:var(--muted);
-line-height:1.8;
-}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-}
-
-.before-after{
-border-radius:26px;
-overflow:hidden;
-background:rgba(255,255,255,.045);
-border:1px solid rgba(255,255,255,.09);
-box-shadow:0 16px 45px rgba(0,0,0,.22);
-}
-
-.ba-img{
-height:235px;
-display:grid;
-grid-template-columns:1fr 1fr;
-}
-
-.ba-half{
-position:relative;
-background-size:cover;
-background-position:center;
-}
-
-.ba-half::after{
-position:absolute;
-left:12px;
-top:12px;
-padding:8px 10px;
-border-radius:999px;
-font-size:.82rem;
-font-weight:950;
-background:rgba(0,0,0,.62);
-backdrop-filter:blur(8px);
-}
-
-.ba-before::after{content:"PRZED";}
-.ba-after::after{content:"PO";background:rgba(34,197,94,.75);color:#041008;}
-
-.before1{background-image:url("https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=700&q=70");filter:saturate(.65) brightness(.72);}
-.after1{background-image:url("https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=700&q=70");}
-.before2{background-image:url("https://images.unsplash.com/photo-1599685315640-8c1bda61ee8a?auto=format&fit=crop&w=700&q=70");filter:saturate(.7) brightness(.72);}
-.after2{background-image:url("https://images.unsplash.com/photo-1620654324005-874f654d3f41?auto=format&fit=crop&w=700&q=70");}
-.before3{background-image:url("https://images.unsplash.com/photo-1590172205957-904ff60a6682?auto=format&fit=crop&w=700&q=70");filter:saturate(.7) brightness(.75);}
-.after3{background-image:url("https://images.unsplash.com/photo-1617576683096-00fc8eecb3af?auto=format&fit=crop&w=700&q=70");}
-
-.ba-caption{
-padding:18px;
-}
-
-.ba-caption h3{
-margin-bottom:8px;
-}
-
-.ba-caption p{
-color:var(--muted);
-line-height:1.65;
-}
-
-.testimonials{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-}
-
-.opinion{
-padding:26px;
-border-radius:26px;
-background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
-border:1px solid rgba(255,255,255,.09);
-box-shadow:0 16px 45px rgba(0,0,0,.2);
-}
-
-.stars{
-color:var(--gold);
-font-size:1.25rem;
-margin-bottom:12px;
-}
-
-.opinion p{
-color:var(--muted);
-line-height:1.75;
-margin-bottom:16px;
-}
-
-.opinion strong{
-color:white;
-}
-
-.map-box{
-display:grid;
-grid-template-columns:.85fr 1.15fr;
-gap:24px;
-align-items:stretch;
-}
-
-.map-info,
-.map-frame{
-border-radius:30px;
-overflow:hidden;
-background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
-border:1px solid rgba(255,255,255,.1);
-box-shadow:0 18px 55px rgba(0,0,0,.22);
-}
-
-.map-info{
-padding:34px;
-}
-
-.map-info h3{
-font-size:2rem;
-margin-bottom:14px;
-}
-
-.map-info p{
-color:var(--muted);
-line-height:1.85;
-margin-bottom:18px;
-}
-
-.map-tags{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-}
-
-.map-tags span{
-padding:10px 12px;
-border-radius:999px;
-background:rgba(74,222,128,.1);
-border:1px solid rgba(74,222,128,.18);
-font-weight:900;
-}
-
-.map-frame iframe{
-width:100%;
-height:100%;
-min-height:390px;
-border:0;
-filter:grayscale(.12) contrast(1.02);
-}
-
-.about-box{
-display:grid;
-grid-template-columns:.9fr 1.1fr;
-gap:30px;
-align-items:stretch;
-}
-
-.about-photo{
-border-radius:30px;
-background:
-linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.45)),
-url("https://images.unsplash.com/photo-1599685315640-8c1bda61ee8a?auto=format&fit=crop&w=1100&q=80");
-background-size:cover;
-background-position:center;
-min-height:390px;
-border:1px solid rgba(255,255,255,.1);
-box-shadow:var(--shadow);
-}
-
-.about-text{
-padding:36px;
-border-radius:30px;
-background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
-border:1px solid rgba(255,255,255,.1);
-box-shadow:0 15px 45px rgba(0,0,0,.22);
-}
-
-.about-text p{
-color:var(--muted);
-line-height:2;
-font-size:1.08rem;
-margin-bottom:18px;
-}
-
-.about-text p:last-child{margin-bottom:0;}
-
-.process{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px;
-counter-reset:step;
-}
-
-.step{
-position:relative;
-padding:27px;
-border-radius:24px;
-background:rgba(255,255,255,.045);
-border:1px solid rgba(255,255,255,.09);
-}
-
-.step::before{
-counter-increment:step;
-content:"0" counter(step);
-display:inline-flex;
-width:44px;
-height:44px;
-align-items:center;
-justify-content:center;
-border-radius:14px;
-background:rgba(74,222,128,.13);
-color:var(--green);
-font-weight:950;
-margin-bottom:18px;
-}
-
-.step h3{margin-bottom:10px;}
-.step p{color:var(--muted);line-height:1.75;}
-
-.contact-card{
-position:relative;
-overflow:hidden;
-max-width:960px;
-margin:0 auto;
-padding:50px;
-border-radius:36px;
-text-align:center;
-background:
-radial-gradient(circle at top left,rgba(74,222,128,.21),transparent 32%),
-linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.035));
-border:1px solid rgba(255,255,255,.12);
-box-shadow:var(--shadow);
-}
-
-.contact-card h2{
-font-size:clamp(2.2rem,5vw,4rem);
-margin-bottom:15px;
-}
-
-.contact-card p{
-color:var(--muted);
-line-height:1.85;
-font-size:1.13rem;
-margin-bottom:28px;
-}
-
-.big-phone{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:12px;
-font-size:clamp(1.35rem,3vw,2.2rem);
-font-weight:950;
-text-decoration:none;
-padding:20px 34px;
-border-radius:999px;
-background:linear-gradient(135deg,var(--green),var(--green2));
-color:#041008;
-box-shadow:0 0 42px rgba(74,222,128,.38);
-transition:.25s;
-}
-
-.big-phone:hover{transform:translateY(-5px) scale(1.02);}
-
-.contact-buttons{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:14px;
-margin-top:18px;
-}
-
-.notice{
-margin-top:28px;
-display:inline-block;
-padding:14px 18px;
-border-radius:18px;
-background:rgba(255,209,102,.09);
-border:1px solid rgba(255,209,102,.25);
-color:#ffe6a6;
-font-size:.96rem;
-line-height:1.6;
-}
-
-.floating-actions{
-position:fixed;
-right:22px;
-bottom:22px;
-z-index:999;
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-
-.floating-actions a{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:8px;
-padding:14px 17px;
-border-radius:999px;
-text-decoration:none;
-font-weight:950;
-box-shadow:0 0 35px rgba(0,0,0,.35);
-}
-
-.float-call{
-background:linear-gradient(135deg,var(--green),var(--green2));
-color:#041008;
-}
-
-.float-whatsapp{
-background:linear-gradient(135deg,#25D366,#128C7E);
-color:white;
-}
-
-footer{
-padding:48px 7%;
-background:#040604;
-border-top:1px solid rgba(255,255,255,.08);
-text-align:center;
-color:#93a197;
-}
-
-footer strong{
-display:block;
-color:white;
-font-size:1.35rem;
-margin-bottom:12px;
-}
-
-footer p{line-height:1.9;}
-
-.reveal{
-opacity:0;
-transform:translateY(55px);
-transition:opacity .9s ease, transform .9s ease;
-}
-
-.reveal.active{
-opacity:1;
-transform:translateY(0);
-}
-
-.float-in{
-animation:fadeUp .9s ease both;
-}
-
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(35px);}
-to{opacity:1;transform:translateY(0);}
-}
+  min-height:100vh;
+  padding:120px 7% 78px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(rgba(2,8,4,.78),rgba(2,8,4,.84)),url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=80");
+  background-size:cover;background-position:center;
+}
+.hero-wrap{max-width:1180px;width:100%;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:52px;}
+.eyebrow{display:inline-flex;padding:10px 14px;margin-bottom:20px;border-radius:999px;border:1px solid rgba(74,222,128,.25);background:rgba(74,222,128,.08);font-weight:900;color:#dcffe6;}
+h1{font-size:clamp(2.8rem,7vw,6rem);line-height:.95;letter-spacing:-3px;margin-bottom:18px;}
+h1 span{color:var(--green);text-shadow:0 0 30px rgba(74,222,128,.35);}
+.slogan{font-size:clamp(1.15rem,2vw,1.65rem);color:#d7ffdf;font-weight:950;margin-bottom:22px;}
+.hero-text{font-size:1.1rem;line-height:1.85;color:var(--muted);max-width:760px;margin-bottom:30px;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 24px;border-radius:999px;text-decoration:none;font-weight:950;transition:.22s;border:1px solid transparent;cursor:pointer;}
+.btn:hover{transform:translateY(-3px);}
+.btn-primary{background:linear-gradient(135deg,var(--green),var(--green2));color:#041008;box-shadow:0 0 34px rgba(74,222,128,.3);}
+.btn-whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);color:white;box-shadow:0 0 30px rgba(37,211,102,.22);}
+.btn-secondary{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12);color:var(--text);}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px;}
+.hero-badges span{padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09);color:#dceee0;font-size:.9rem;font-weight:800;}
+.logo-card{justify-self:center;width:min(400px,100%);padding:22px;border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.13);box-shadow:var(--shadow);}
+.logo-card img{width:100%;display:block;border-radius:24px;}
+.logo-mini-note{margin-top:14px;text-align:center;font-weight:950;color:#eaffe9;}
+
+.section{padding:90px 7%;}
+.section-inner{max-width:1180px;margin:0 auto;}
+.section-title{text-align:center;margin-bottom:46px;}
+.section-title small{display:inline-block;color:var(--green);font-weight:950;letter-spacing:1.1px;text-transform:uppercase;margin-bottom:10px;}
+.section-title h2{font-size:clamp(2rem,4vw,3.4rem);line-height:1.05;letter-spacing:-1px;}
+.section-title p{max-width:760px;margin:16px auto 0;color:var(--muted);line-height:1.75;}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.card{padding:26px;border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025)),var(--card);border:1px solid var(--line);box-shadow:0 16px 45px rgba(0,0,0,.22);transition:.25s;}
+.card:hover{transform:translateY(-7px);border-color:rgba(74,222,128,.42);}
+.icon{font-size:2.25rem;margin-bottom:15px;display:inline-block;}
+.card h3{font-size:1.27rem;margin-bottom:10px;}
+.card p,.card li{color:var(--muted);line-height:1.72;}
+
+.season-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.season-card{padding:28px;border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.026)),var(--card2);border:1px solid rgba(255,255,255,.1);box-shadow:0 18px 50px rgba(0,0,0,.22);}
+.season-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:16px;}
+.season-head h3{font-size:1.5rem;}
+.season-months{padding:8px 11px;border-radius:999px;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.2);font-weight:900;color:#dffff0;white-space:nowrap;font-size:.86rem;}
+.season-card p{color:var(--muted);line-height:1.75;margin-bottom:14px;}
+.season-card ul{display:grid;gap:8px;list-style:none;}
+.season-card li{color:#e9fff0;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);}
+
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.why-box{padding:20px;border-radius:20px;background:linear-gradient(145deg,rgba(74,222,128,.11),rgba(255,255,255,.035));border:1px solid rgba(74,222,128,.16);font-weight:900;color:#effff2;}
+
+.price-table-wrap{overflow-x:auto;border-radius:26px;border:1px solid rgba(255,255,255,.1);box-shadow:0 18px 55px rgba(0,0,0,.25);}
+.price-table{width:100%;border-collapse:collapse;min-width:720px;background:rgba(255,255,255,.035);}
+.price-table th,.price-table td{padding:17px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left;vertical-align:top;}
+.price-table th{background:rgba(74,222,128,.12);color:#eaffef;}
+.price-table td{color:var(--muted);line-height:1.6;}
+.price-table td strong{color:white;font-size:1.04rem;}
+.price-note{margin-top:17px;color:var(--muted);line-height:1.75;text-align:center;}
+
+.calculator{display:grid;grid-template-columns:1fr .9fr;gap:24px;align-items:stretch;}
+.calc-panel,.calc-result,.form-card{padding:28px;border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.1);box-shadow:0 18px 50px rgba(0,0,0,.22);}
+.form-group{display:grid;gap:8px;margin-bottom:15px;}
+.form-group label{font-weight:900;color:#effff2;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:14px 15px;border-radius:15px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.22);color:white;outline:none;font-size:1rem;}
+.form-group textarea{min-height:115px;resize:vertical;}
+.calc-result{display:flex;flex-direction:column;justify-content:center;text-align:center;}
+.calc-result small{color:var(--muted);font-weight:900;text-transform:uppercase;letter-spacing:1px;}
+.calc-result strong{display:block;font-size:clamp(2.4rem,5vw,4rem);color:var(--green);margin:12px 0;text-shadow:0 0 28px rgba(74,222,128,.25);}
+.calc-result p{color:var(--muted);line-height:1.75;}
+
+.area-box{display:grid;grid-template-columns:.85fr 1.15fr;gap:24px;align-items:stretch;}
+.area-info,.map-frame{border-radius:28px;overflow:hidden;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.1);box-shadow:0 18px 50px rgba(0,0,0,.22);}
+.area-info{padding:32px;}
+.area-info h3{font-size:1.9rem;margin-bottom:14px;}
+.area-info p{color:var(--muted);line-height:1.8;margin-bottom:18px;}
+.area-tags{display:flex;flex-wrap:wrap;gap:10px;}
+.area-tags span{padding:10px 12px;border-radius:999px;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.18);font-weight:900;}
+.map-frame iframe{width:100%;height:100%;min-height:360px;border:0;filter:grayscale(.1) contrast(1.02);}
+
+.about-box{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:stretch;}
+.about-photo{border-radius:28px;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.45)),url("https://images.unsplash.com/photo-1599685315640-8c1bda61ee8a?auto=format&fit=crop&w=1100&q=80");background-size:cover;background-position:center;min-height:360px;border:1px solid rgba(255,255,255,.1);box-shadow:var(--shadow);}
+.about-text{padding:34px;border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.1);box-shadow:0 15px 45px rgba(0,0,0,.22);}
+.about-text p{color:var(--muted);line-height:1.9;font-size:1.06rem;margin-bottom:16px;}
+
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:17px;counter-reset:step;}
+.step{position:relative;padding:25px;border-radius:22px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);}
+.step::before{counter-increment:step;content:"0" counter(step);display:inline-flex;width:42px;height:42px;align-items:center;justify-content:center;border-radius:14px;background:rgba(74,222,128,.13);color:var(--green);font-weight:950;margin-bottom:16px;}
+.step h3{margin-bottom:9px;}.step p{color:var(--muted);line-height:1.7;}
+
+.faq{max-width:900px;margin:0 auto;display:grid;gap:13px;}
+.faq-item{border:1px solid rgba(255,255,255,.1);border-radius:19px;background:rgba(255,255,255,.045);overflow:hidden;}
+.faq-item button{width:100%;padding:19px 21px;text-align:left;background:transparent;border:0;color:white;font-weight:950;font-size:1.03rem;cursor:pointer;}
+.faq-item div{max-height:0;overflow:hidden;transition:.3s ease;}
+.faq-item.active div{max-height:220px;}
+.faq-item p{padding:0 21px 19px;color:var(--muted);line-height:1.75;}
+
+.contact-card{max-width:940px;margin:0 auto;padding:46px;border-radius:34px;text-align:center;background:radial-gradient(circle at top left,rgba(74,222,128,.2),transparent 32%),linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.12);box-shadow:var(--shadow);}
+.contact-card h2{font-size:clamp(2.1rem,5vw,3.7rem);margin-bottom:15px;}
+.contact-card p{color:var(--muted);line-height:1.8;font-size:1.1rem;margin-bottom:26px;}
+.big-phone{display:inline-flex;align-items:center;justify-content:center;gap:12px;font-size:clamp(1.3rem,3vw,2rem);font-weight:950;text-decoration:none;padding:18px 30px;border-radius:999px;background:linear-gradient(135deg,var(--green),var(--green2));color:#041008;box-shadow:0 0 40px rgba(74,222,128,.34);transition:.23s;}
+.big-phone:hover{transform:translateY(-4px);}
+.contact-buttons{display:flex;justify-content:center;flex-wrap:wrap;gap:13px;margin-top:18px;}
+.notice{margin-top:26px;display:inline-block;padding:13px 17px;border-radius:17px;background:rgba(255,209,102,.09);border:1px solid rgba(255,209,102,.25);color:#ffe6a6;font-size:.95rem;line-height:1.55;}
+
+.floating-actions{position:fixed;right:18px;bottom:18px;z-index:999;display:flex;flex-direction:column;gap:10px;}
+.floating-actions a{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 16px;border-radius:999px;text-decoration:none;font-weight:950;box-shadow:0 0 32px rgba(0,0,0,.35);}
+.float-call{background:linear-gradient(135deg,var(--green),var(--green2));color:#041008;}
+.float-whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);color:white;}
+
+footer{padding:46px 7%;background:#040604;border-top:1px solid rgba(255,255,255,.08);text-align:center;color:#93a197;}
+footer strong{display:block;color:white;font-size:1.28rem;margin-bottom:10px;}footer p{line-height:1.8;}
+
+.reveal{opacity:0;transform:translateY(45px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.active{opacity:1;transform:translateY(0);}
 
 @media(max-width:1080px){
-.nav{
-position:absolute;
-top:74px;
-left:7%;
-right:7%;
-display:none;
-flex-direction:column;
-align-items:stretch;
-padding:18px;
-border-radius:24px;
-background:rgba(5,10,6,.96);
-border:1px solid rgba(255,255,255,.1);
-box-shadow:var(--shadow);
+  .nav{position:absolute;top:72px;left:7%;right:7%;display:none;flex-direction:column;align-items:stretch;padding:18px;border-radius:22px;background:rgba(5,10,6,.96);border:1px solid rgba(255,255,255,.1);box-shadow:var(--shadow);}
+  .nav.open{display:flex;}
+  .mobile-menu{display:block;}
+  .hero-wrap{grid-template-columns:1fr;text-align:center;}
+  .hero-actions,.hero-badges{justify-content:center;}
+  .logo-card{max-width:340px;}
+  .cards{grid-template-columns:repeat(2,1fr);}
+  .why-grid,.process{grid-template-columns:repeat(2,1fr);}
+  .about-box,.calculator,.area-box{grid-template-columns:1fr;}
+  .about-photo{min-height:280px;}
 }
-
-.nav.open{display:flex;}
-.mobile-menu{display:block;}
-
-.hero-wrap{
-grid-template-columns:1fr;
-text-align:center;
-}
-
-.hero-actions,
-.hero-badges{
-justify-content:center;
-}
-
-.logo-card{max-width:360px;}
-.cards{grid-template-columns:repeat(2,1fr);}
-.why-grid,.process{grid-template-columns:repeat(2,1fr);}
-.about-box,.calculator,.map-box,.care-box{grid-template-columns:1fr;}
-.about-photo{min-height:280px;}
-.gallery,.testimonials{grid-template-columns:1fr;}
-.map-frame iframe{min-height:330px;}
-}
-
 @media(max-width:620px){
-.topbar{padding:11px 5%;}
-.brand span{font-size:.92rem;}
-.brand img{width:40px;height:40px;}
-.nav{left:5%;right:5%;top:66px;}
-
-.hero{padding:105px 5% 65px;}
-h1{letter-spacing:-1.6px;}
-
-.logo-card{padding:14px;border-radius:24px;}
-.logo-card img{border-radius:18px;}
-
-.logo-mini-note{
-font-size:.86rem;
-left:12px;
-right:12px;
-bottom:-18px;
+  .topbar{padding:11px 5%;}.brand span{font-size:.92rem;}.brand img{width:40px;height:40px;}.nav{left:5%;right:5%;top:66px;}
+  .hero{padding:105px 5% 65px;}h1{letter-spacing:-1.5px;}
+  .section{padding:70px 5%;}.cards,.why-grid,.process,.season-grid{grid-template-columns:1fr;}
+  .card,.contact-card,.about-text,.season-card,.calc-panel,.calc-result,.form-card,.area-info{padding:25px;border-radius:23px;}
+  .btn{width:100%;}.hero-actions{width:100%;}
+  .floating-actions{left:10px;right:10px;bottom:10px;flex-direction:row;}
+  .floating-actions a{flex:1;padding:13px 10px;font-size:.9rem;}
+  footer{padding-bottom:88px;}
 }
-
-.section{padding:72px 5%;}
-
-.cards,
-.why-grid,
-.process,
-.season-grid{
-grid-template-columns:1fr;
-}
-
-.card,
-.contact-card,
-.about-text,
-.season-card,
-.care-box,
-.calc-panel,
-.calc-result,
-.form-card,
-.map-info{
-padding:26px;
-border-radius:24px;
-}
-
-.btn{width:100%;}
-.hero-actions{width:100%;}
-.hero-badges span{font-size:.84rem;}
-
-.floating-actions{
-left:12px;
-right:12px;
-bottom:12px;
-flex-direction:row;
-}
-
-.floating-actions a{
-flex:1;
-padding:13px 10px;
-font-size:.9rem;
-}
-
-footer{padding-bottom:96px;}
-}
-
-/* === V4 efekt wow === */
-.preloader{position:fixed;inset:0;z-index:5000;background:#050805;display:grid;place-items:center;transition:.6s ease;}
-.preloader.hide{opacity:0;visibility:hidden;}
-.preloader div{text-align:center;animation:prePulse 1.3s infinite ease-in-out;}
-.preloader img{width:98px;height:98px;border-radius:26px;box-shadow:0 0 45px rgba(74,222,128,.45);display:block;margin:0 auto 18px;}
-.preloader strong{color:#eaffef;font-weight:950;}
-@keyframes prePulse{50%{transform:scale(1.06)}}
-.grass-bg{position:fixed;left:0;right:0;bottom:0;height:95px;z-index:1;pointer-events:none;opacity:.28;background:repeating-linear-gradient(75deg, transparent 0 9px, rgba(74,222,128,.38) 10px 12px, transparent 13px 20px);filter:blur(.2px);animation:grassMove 5s infinite ease-in-out;}
-@keyframes grassMove{50%{transform:skewX(-3deg) translateX(8px)}}
-.season-switch{position:fixed;left:18px;bottom:22px;z-index:1001;display:flex;gap:8px;background:rgba(5,10,6,.72);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(14px);padding:8px;border-radius:999px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
-.season-switch button{width:38px;height:38px;border:0;border-radius:999px;background:rgba(255,255,255,.08);cursor:pointer;font-size:1.1rem;transition:.2s}
-.season-switch button:hover{transform:translateY(-3px);background:rgba(74,222,128,.22)}
-body.season-summer{--green:#facc15;--green2:#22c55e;--gold:#f97316;}
-body.season-autumn{--green:#f97316;--green2:#ca8a04;--gold:#fde68a;}
-body.season-winter{--green:#93c5fd;--green2:#38bdf8;--gold:#e0f2fe;}
-.hero-video{position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,15,7,.72),rgba(4,15,7,.38)),url('https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1800&q=80');background-size:cover;background-position:center;opacity:.38;animation:slowZoom 18s infinite alternate ease-in-out;}
-@keyframes slowZoom{from{transform:scale(1)}to{transform:scale(1.08)}}
-.card .icon{filter:drop-shadow(0 0 16px rgba(74,222,128,.25));animation:mowerFloat 3.5s infinite ease-in-out;}
-@keyframes mowerFloat{50%{transform:translateY(-5px) rotate(-2deg)}}
-.pro-gallery{grid-template-columns:repeat(4,1fr)}
-.gallery-item{min-height:270px;border:1px solid rgba(255,255,255,.1);border-radius:28px;overflow:hidden;cursor:pointer;background-image:linear-gradient(to top,rgba(0,0,0,.72),transparent 55%),url('https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=900&q=75');background-size:cover;background-position:center;box-shadow:0 18px 52px rgba(0,0,0,.26);transition:.28s;text-align:left;padding:18px;display:flex;align-items:flex-end;}
-.gallery-item.g2{background-image:linear-gradient(to top,rgba(0,0,0,.72),transparent 55%),url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=900&q=75')}
-.gallery-item.g3{background-image:linear-gradient(to top,rgba(0,0,0,.72),transparent 55%),url('https://images.unsplash.com/photo-1599685315640-8c1bda61ee8a?auto=format&fit=crop&w=900&q=75')}
-.gallery-item.g4{background-image:linear-gradient(to top,rgba(0,0,0,.72),transparent 55%),url('https://images.unsplash.com/photo-1601134467661-3d775b999c8b?auto=format&fit=crop&w=900&q=75')}
-.gallery-item:hover{transform:translateY(-8px) scale(1.02);border-color:rgba(74,222,128,.45)}
-.gallery-item span{font-weight:950;color:white;font-size:1.08rem;text-shadow:0 3px 14px rgba(0,0,0,.8)}
-.lightbox,.callback-modal{position:fixed;inset:0;z-index:4000;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;padding:22px;backdrop-filter:blur(8px)}
-.lightbox.active,.callback-modal.active{display:flex}
-.lightbox>div,.callback-box{max-width:920px;width:min(920px,100%);background:#071009;border:1px solid rgba(255,255,255,.13);border-radius:28px;padding:18px;box-shadow:0 30px 90px rgba(0,0,0,.6);position:relative}
-.lightbox img{width:100%;max-height:72vh;object-fit:cover;border-radius:20px;display:block;margin-bottom:14px}
-.lightbox button,.modal-close{position:absolute;right:14px;top:14px;width:42px;height:42px;border:0;border-radius:999px;background:rgba(0,0,0,.62);color:white;font-size:1.6rem;cursor:pointer}
-#lightboxTitle{font-size:1.25rem;color:white}
-.faq{max-width:920px;margin:0 auto;display:grid;gap:14px}
-.faq-item{border:1px solid rgba(255,255,255,.1);border-radius:20px;background:rgba(255,255,255,.045);overflow:hidden}
-.faq-item button{width:100%;padding:20px 22px;text-align:left;background:transparent;border:0;color:white;font-weight:950;font-size:1.05rem;cursor:pointer}
-.faq-item div{max-height:0;overflow:hidden;transition:.3s ease}
-.faq-item.active div{max-height:220px}
-.faq-item p{padding:0 22px 20px;color:var(--muted);line-height:1.8}
-.callback-box h2{font-size:2rem;margin-bottom:10px}.callback-box p{color:var(--muted);line-height:1.7;margin-bottom:18px}.callback-box input,.callback-box textarea{width:100%;margin-bottom:12px;padding:15px 16px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:white;font:inherit}.callback-box textarea{min-height:115px;resize:vertical}.quick-contact{position:fixed;right:18px;bottom:22px;z-index:1200;display:flex;flex-direction:column;gap:10px}.quick-contact a,.quick-contact button{width:54px;height:54px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(135deg,var(--green),var(--green2));display:grid;place-items:center;text-decoration:none;color:#041008;font-size:1.35rem;box-shadow:0 15px 35px rgba(74,222,128,.32);cursor:pointer}.price-table-wrap{display:none}.price-table-wrap.active{display:block}.price-accordion{display:grid;gap:12px;margin-bottom:18px}.price-accordion button{padding:16px 18px;border-radius:18px;border:1px solid rgba(74,222,128,.2);background:rgba(74,222,128,.09);color:white;font-weight:950;cursor:pointer;text-align:left}
-@media(max-width:980px){.pro-gallery{grid-template-columns:repeat(2,1fr)}.quick-contact{right:12px;bottom:90px}.season-switch{left:10px;bottom:12px}}
-@media(max-width:620px){.pro-gallery{grid-template-columns:1fr}.gallery-item{min-height:230px}.season-switch{display:none}.quick-contact{display:none}.hero-video{opacity:.28}}
-
 </style>
 </head>
 
 <body>
-
-<div class="preloader" id="preloader"><div><img src="nasze%20logo.png" alt="Pora na Porządek"><strong>Ładowanie porządku...</strong></div></div>
-<div class="grass-bg" aria-hidden="true"></div>
-<div class="season-switch" aria-label="Zmień klimat strony"><button type="button" onclick="setSeason('spring')">🌱</button><button type="button" onclick="setSeason('summer')">☀️</button><button type="button" onclick="setSeason('autumn')">🍂</button><button type="button" onclick="setSeason('winter')">❄️</button></div>
-
 <nav class="topbar" id="topbar">
-<a href="#start" class="brand">
-<img src="nasze%20logo.png" alt="Pora na Porządek">
-<span>Pora na Porządek</span>
-</a>
+  <a href="#start" class="brand">
+    <img src="nasze%20logo.png" alt="Pora na Porządek">
+    <span>Pora na Porządek</span>
+  </a>
 
-<button class="mobile-menu" id="mobileMenu" aria-label="Otwórz menu">☰ Menu</button>
+  <button class="mobile-menu" id="mobileMenu" aria-label="Otwórz menu">☰ Menu</button>
 
-<div class="nav" id="nav">
-<a href="#uslugi">Usługi</a>
-<a href="#sezony">Sezony</a>
-<a href="#cennik">Cennik</a>
-<a href="#kalkulator">Kalkulator</a>
-<a href="#galeria">Galeria</a>
-<a href="#obszar">Obszar</a>
-<a href="#faq">FAQ</a>
-<a href="#kontakt" class="nav-call">📞 797 893 001</a>
-</div>
+  <div class="nav" id="nav">
+    <a href="#uslugi">Usługi</a>
+    <a href="#sezony">Sezony</a>
+    <a href="#cennik">Cennik</a>
+    <a href="#kalkulator">Kalkulator</a>
+    <a href="#obszar">Obszar</a>
+    <a href="#faq">FAQ</a>
+    <a href="#kontakt" class="nav-call">📞 797 893 001</a>
+  </div>
 </nav>
 
 <header class="hero" id="start">
-<div class="hero-video" aria-hidden="true"></div>
-<div class="hero-wrap">
+  <div class="hero-wrap">
+    <div class="hero-content">
+      <div class="eyebrow">🌿 Ełk • Augustów • Kalinowo i okolice</div>
+      <h1>Pora na <span>Porządek</span></h1>
+      <div class="slogan">Czysto o każdej porze roku</div>
+      <p class="hero-text">
+        Koszenie trawy, odśnieżanie, sprzątanie działek, garaży i terenów zielonych.
+        Robimy konkretną robotę bez kręcenia nosem — przyjazd, robota, porządek.
+      </p>
 
-<div class="hero-content">
-<div class="eyebrow">🌿 Ełk • Augustów • Kalinowo i okolice</div>
+      <div class="hero-actions">
+        <a href="tel:797893001" class="btn btn-primary">📞 Zadzwoń — 797 893 001</a>
+        <a href="https://wa.me/48797893001?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zapyta%C4%87%20o%20wycen%C4%99%20us%C5%82ugi." target="_blank" rel="noopener" class="btn btn-whatsapp">💬 Napisz na WhatsApp</a>
+        <a href="#kalkulator" class="btn btn-secondary">📊 Szybka wycena</a>
+      </div>
 
-<h1>Pora na <span>Porządek</span></h1>
+      <div class="hero-badges">
+        <span>🌿 Koszenie</span>
+        <span>🍂 Grabienie</span>
+        <span>❄️ Odśnieżanie</span>
+        <span>🧹 Garaże</span>
+        <span>🌳 Działki</span>
+        <span>🚗 Dojazd</span>
+      </div>
+    </div>
 
-<div class="slogan">Czysto o każdej porze roku</div>
-
-<p class="hero-text">
-Koszenie trawy, odśnieżanie, sprzątanie działek, garaży i terenów zielonych.
-Zajmujemy się też regularną opieką nad działkami podczas nieobecności właścicieli.
-Krótko mówiąc: Ty odpoczywasz, teren nie zarasta jak dżungla po deszczu.
-</p>
-
-<div class="hero-actions">
-<a href="tel:797893001" class="btn btn-primary">📞 Zadzwoń — 797 893 001</a>
-<a href="https://wa.me/48797893001?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zapyta%C4%87%20o%20wycen%C4%99%20us%C5%82ugi." target="_blank" rel="noopener" class="btn btn-whatsapp">💬 WhatsApp</a>
-<a href="#kalkulator" class="btn btn-secondary">📊 Szybka wycena</a>
-<button class="btn btn-secondary" type="button" onclick="openCallback()">📞 Oddzwońcie do mnie</button>
-</div>
-
-<div class="hero-badges">
-<span>🌿 Koszenie</span>
-<span>🍂 Grabienie</span>
-<span>❄️ Odśnieżanie</span>
-<span>🧹 Garaże</span>
-<span>🌳 Działki</span>
-<span>🚗 Dojazd</span>
-</div>
-</div>
-
-<div class="logo-card">
-<img src="nasze%20logo.png" alt="Logo Pora na Porządek" loading="eager">
-<div class="logo-mini-note">Profesjonalnie, prywatnie i konkretnie.</div>
-</div>
-
-</div>
+    <div class="logo-card">
+      <img src="nasze%20logo.png" alt="Logo Pora na Porządek" loading="eager">
+      <div class="logo-mini-note">Profesjonalnie, prywatnie i konkretnie.</div>
+    </div>
+  </div>
 </header>
 
 <main>
-
 <section class="section reveal" id="uslugi">
-<div class="section-inner">
+  <div class="section-inner">
+    <div class="section-title">
+      <small>Oferta</small>
+      <h2>🌿 Nasze usługi</h2>
+      <p>Najważniejsze rzeczy w jednym miejscu. Bez ściany tekstu, bo klient ma wiedzieć od razu, czy dobrze trafił.</p>
+    </div>
 
-<div class="section-title">
-<small>Oferta</small>
-<h2>🌿 Nasze Usługi</h2>
-<p>Ogarnianie terenu od trawnika po garaż. Bez wielkich gadek — przyjazd, robota, porządek.</p>
-</div>
-
-<div class="cards">
-
-<div class="card">
-<div class="icon">🌿</div>
-<h3>Koszenie trawy</h3>
-<p>Koszenie działek, ogrodów, trawników oraz zaniedbanych terenów. Szybko i dokładnie.</p>
-</div>
-
-<div class="card">
-<div class="icon">🍂</div>
-<h3>Grabienie liści</h3>
-<p>Porządki jesienne i wiosenne, sprzątanie ogrodów oraz przygotowanie działek do sezonu.</p>
-</div>
-
-<div class="card">
-<div class="icon">❄️</div>
-<h3>Odśnieżanie</h3>
-<p>Podjazdy, chodniki, posesje prywatne oraz teren wokół budynków. Możliwe pojedynczo lub regularnie.</p>
-</div>
-
-<div class="card">
-<div class="icon">🧹</div>
-<h3>Sprzątanie garaży</h3>
-<p>Garaże, komórki, piwnice, budynki gospodarcze oraz pomieszczenia po remontach.</p>
-</div>
-
-<div class="card">
-<div class="icon">🌳</div>
-<h3>Tereny zielone</h3>
-<p>Przygotowanie działek do sprzedaży, użytkowania lub sezonu letniego.</p>
-</div>
-
-<div class="card">
-<div class="icon">🏡</div>
-<h3>Opieka nad działką</h3>
-<p>Regularne doglądanie, koszenie, porządki i podstawowa pielęgnacja terenu podczas nieobecności właścicieli.</p>
-</div>
-
-</div>
-</div>
+    <div class="cards">
+      <div class="card"><div class="icon">🌿</div><h3>Koszenie trawy</h3><p>Koszenie ogrodów, trawników, działek i zaniedbanych terenów. Ma być równo, czysto i bez lipy.</p></div>
+      <div class="card"><div class="icon">🍂</div><h3>Grabienie liści</h3><p>Porządki jesienne i wiosenne, zbieranie liści, ogarnianie ogrodu po sezonie.</p></div>
+      <div class="card"><div class="icon">❄️</div><h3>Odśnieżanie</h3><p>Podjazdy, chodniki i teren przy posesji. Jednorazowo albo regularnie, zależnie od pogody.</p></div>
+      <div class="card"><div class="icon">🧹</div><h3>Sprzątanie garaży</h3><p>Garaże, komórki, piwnice, budynki gospodarcze i pomieszczenia po remoncie.</p></div>
+      <div class="card"><div class="icon">🌳</div><h3>Tereny zielone</h3><p>Przygotowanie działek do sezonu, sprzedaży albo normalnego użytkowania.</p></div>
+      <div class="card"><div class="icon">🏡</div><h3>Opieka nad działką</h3><p>Regularne koszenie, porządki i doglądanie terenu podczas nieobecności właściciela.</p></div>
+    </div>
+  </div>
 </section>
 
 <section class="section reveal" id="sezony">
-<div class="section-inner">
+  <div class="section-inner">
+    <div class="section-title">
+      <small>Cały rok</small>
+      <h2>🗓️ Prace sezonowe</h2>
+      <p>W każdej porze roku jest coś do zrobienia. Trawa, liście, śnieg — przyroda odpala DLC co kilka miesięcy.</p>
+    </div>
 
-<div class="section-title">
-<small>Cały rok</small>
-<h2>🗓️ Co robimy w każdą porę roku?</h2>
-<p>Nie tylko koszenie. Teren wymaga roboty wiosną, latem, jesienią i zimą — a my możemy to ogarnąć od A do Z.</p>
-</div>
-
-<div class="season-grid">
-
-<div class="season-card">
-<div class="season-head">
-<h3>Wiosna 🌱</h3>
-<span class="season-months">marzec–maj</span>
-</div>
-<p>Najwięcej roboty jest od marca do maja. To czas porządków po zimie i przygotowania ogrodu do sezonu.</p>
-<ul>
-<li>koszenie pierwszej trawy</li>
-<li>grabienie liści po zimie</li>
-<li>sprzątanie działek</li>
-<li>przycinanie krzewów</li>
-<li>wywóz gałęzi</li>
-<li>przygotowanie ogrodów</li>
-</ul>
-</div>
-
-<div class="season-card">
-<div class="season-head">
-<h3>Lato ☀️</h3>
-<span class="season-months">czerwiec–sierpień</span>
-</div>
-<p>Latem liczy się regularność. Trawa rośnie szybko, a zaniedbana działka robi się buszem w ekspresowym tempie.</p>
-<ul>
-<li>regularne koszenie trawy</li>
-<li>koszenie wysokiej trawy</li>
-<li>wykaszanie przy płotach i budynkach</li>
-<li>porządkowanie terenów zielonych</li>
-<li>podlewanie i doglądanie działki</li>
-<li>opieka nad posesją podczas urlopu</li>
-</ul>
-</div>
-
-<div class="season-card">
-<div class="season-head">
-<h3>Jesień 🍂</h3>
-<span class="season-months">wrzesień–listopad</span>
-</div>
-<p>Jesień to ostatnie porządki przed zimą. Lepiej ogarnąć liście i teren wcześniej, niż potem odkopywać wszystko spod błota.</p>
-<ul>
-<li>grabienie i zbieranie liści</li>
-<li>ostatnie koszenie sezonu</li>
-<li>sprzątanie ogrodów</li>
-<li>cięcie i porządkowanie krzewów</li>
-<li>wywóz odpadów zielonych</li>
-<li>przygotowanie posesji do zimy</li>
-</ul>
-</div>
-
-<div class="season-card">
-<div class="season-head">
-<h3>Zima ❄️</h3>
-<span class="season-months">grudzień–luty</span>
-</div>
-<p>Zimą robota też jest. Śnieg sam nie zniknie, chyba że poczekać do maja — ale sąsiedzi mogą mieć inne zdanie.</p>
-<ul>
-<li>odśnieżanie podjazdów</li>
-<li>odśnieżanie chodników</li>
-<li>posypywanie śliskich miejsc</li>
-<li>usuwanie lodu</li>
-<li>porządki w garażach i budynkach</li>
-<li>stała obsługa posesji zimą</li>
-</ul>
-</div>
-
-</div>
-
-<div class="care-box reveal">
-<div>
-<h3>🏡 Regularna opieka nad działką</h3>
-<p>
-Wyjeżdżasz, mieszkasz dalej albo po prostu nie masz czasu? Możemy regularnie zajmować się działką:
-kosić, doglądać, sprzątać, przygotowywać teren przed przyjazdem i pilnować, żeby posesja nie wyglądała jak opuszczona baza w lesie.
-</p>
-</div>
-<div class="care-list">
-<span>✅ stałe koszenie co 1–3 tygodnie</span>
-<span>✅ sprzątanie po wichurach i deszczu</span>
-<span>✅ przygotowanie działki przed Twoim przyjazdem</span>
-<span>✅ szybkie zdjęcie po wykonanej pracy</span>
-</div>
-</div>
-
-</div>
+    <div class="season-grid">
+      <div class="season-card">
+        <div class="season-head"><h3>Wiosna 🌱</h3><span class="season-months">marzec–maj</span></div>
+        <p>Porządki po zimie i przygotowanie ogrodu do sezonu.</p>
+        <ul><li>pierwsze koszenie trawy</li><li>grabienie po zimie</li><li>sprzątanie działek</li><li>przycinanie krzewów</li></ul>
+      </div>
+      <div class="season-card">
+        <div class="season-head"><h3>Lato ☀️</h3><span class="season-months">czerwiec–sierpień</span></div>
+        <p>Regularne koszenie i pilnowanie, żeby działka nie zamieniła się w dżunglę.</p>
+        <ul><li>koszenie trawników</li><li>koszenie wysokiej trawy</li><li>wykaszanie przy płotach</li><li>opieka nad posesją podczas urlopu</li></ul>
+      </div>
+      <div class="season-card">
+        <div class="season-head"><h3>Jesień 🍂</h3><span class="season-months">wrzesień–listopad</span></div>
+        <p>Ostatnie porządki przed zimą, liście i przygotowanie terenu.</p>
+        <ul><li>grabienie liści</li><li>ostatnie koszenie</li><li>sprzątanie ogrodu</li><li>wywóz odpadów zielonych po ustaleniu</li></ul>
+      </div>
+      <div class="season-card">
+        <div class="season-head"><h3>Zima ❄️</h3><span class="season-months">grudzień–luty</span></div>
+        <p>Śnieg sam nie znika wtedy, kiedy człowiek chce. No chyba że czekać do maja.</p>
+        <ul><li>odśnieżanie podjazdów</li><li>odśnieżanie chodników</li><li>posypywanie śliskich miejsc</li><li>porządki w garażach</li></ul>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="section reveal" id="dlaczego">
-<div class="section-inner">
-
-<div class="section-title">
-<small>Konkrety</small>
-<h2>⭐ Dlaczego My?</h2>
-<p>Bo tu chodzi o prostą sprawę: ma być czysto, sprawnie i bez kręcenia nosem jak kosiarka na mokrej trawie.</p>
-</div>
-
-<div class="why-grid">
-<div class="why-box">✅ Szybkie terminy realizacji</div>
-<div class="why-box">✅ Uczciwe podejście do klienta</div>
-<div class="why-box">✅ Własny sprzęt</div>
-<div class="why-box">✅ Dojazd do klienta</div>
-<div class="why-box">✅ Dokładna robota</div>
-<div class="why-box">✅ Atrakcyjne ceny</div>
-<div class="why-box">✅ Darmowa wycena</div>
-<div class="why-box">✅ Możliwość stałej współpracy</div>
-</div>
-
-</div>
+  <div class="section-inner">
+    <div class="section-title">
+      <small>Konkrety</small>
+      <h2>⭐ Dlaczego my?</h2>
+      <p>Prosta zasada: dogadujemy robotę, cenę i termin. Potem teren ma wyglądać lepiej niż przed przyjazdem.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-box">✅ Szybki kontakt</div>
+      <div class="why-box">✅ Własny sprzęt</div>
+      <div class="why-box">✅ Dojazd do klienta</div>
+      <div class="why-box">✅ Darmowa wycena</div>
+      <div class="why-box">✅ Dokładna robota</div>
+      <div class="why-box">✅ Uczciwe ceny</div>
+      <div class="why-box">✅ Możliwość stałej współpracy</div>
+      <div class="why-box">✅ Zdjęcie po wykonanej pracy</div>
+    </div>
+  </div>
 </section>
 
 <section class="section reveal" id="cennik">
-<div class="section-inner">
+  <div class="section-inner">
+    <div class="section-title">
+      <small>Orientacyjnie</small>
+      <h2>💰 Cennik usług</h2>
+      <p>Ceny są orientacyjne. Ostateczna wycena zależy od metrażu, stanu terenu, wysokości trawy, zakresu pracy i dojazdu.</p>
+    </div>
 
-<div class="section-title">
-<small>Orientacyjne ceny</small>
-<h2>💰 Cennik usług</h2>
-<p>Ceny są orientacyjne, bo każda działka jest inna. Inaczej liczy się równy trawnik, a inaczej metr trawy po pas i krzaki jak w Jumanji.</p>
-</div>
-
-<div class="price-accordion"><button type="button" onclick="showPrices(this)">🌿 Koszenie i ogrody</button><button type="button" onclick="showPrices(this)">🍂 Prace sezonowe</button><button type="button" onclick="showPrices(this)">❄️ Zima i odśnieżanie</button></div>
-<div class="price-table-wrap active">
-<table class="price-table">
-<thead>
-<tr>
-<th>Usługa</th>
-<th>Cena od</th>
-<th>Uwagi</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Koszenie małego ogrodu</strong></td>
-<td>od 180–250 zł</td>
-<td>Mały trawnik do ok. 300 m². Cena obejmuje sensowne minimum za dojazd, paliwo i czas pracy.</td>
-</tr>
-<tr>
-<td><strong>Koszenie działki</strong></td>
-<td>od 250 zł</td>
-<td>Większe działki liczone indywidualnie według metrażu, wysokości trawy i dojazdu.</td>
-</tr>
-<tr>
-<td><strong>Koszenie bardzo zaniedbanego terenu</strong></td>
-<td>od 350 zł</td>
-<td>Wysoka trawa, samosiejki, nierówny teren — tu nie ma zabawy w koszenie za drobne.</td>
-</tr>
-<tr>
-<td><strong>Grabienie liści</strong></td>
-<td>od 180 zł</td>
-<td>Możliwe z workowaniem i przygotowaniem do wywozu.</td>
-</tr>
-<tr>
-<td><strong>Sprzątanie garażu / pomieszczenia</strong></td>
-<td>od 150 zł</td>
-<td>Zależy od ilości rzeczy i zakresu pracy.</td>
-</tr>
-<tr>
-<td><strong>Przycinanie krzewów</strong></td>
-<td>od 150 zł</td>
-<td>Małe prace ogrodowe i porządkowe.</td>
-</tr>
-<tr>
-<td><strong>Wywóz gałęzi / odpadów zielonych</strong></td>
-<td>wycena indywidualna</td>
-<td>Zależnie od ilości, odległości i możliwości transportu.</td>
-</tr>
-<tr>
-<td><strong>Odśnieżanie podjazdu / chodnika</strong></td>
-<td>od 120 zł</td>
-<td>Możliwe jednorazowo lub regularnie po opadach.</td>
-</tr>
-<tr>
-<td><strong>Regularna opieka nad działką</strong></td>
-<td>od 300 zł / miesiąc</td>
-<td>Stałe koszenie, doglądanie i podstawowe porządki według ustaleń.</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p class="price-note">
-📌 Ceny są orientacyjne. Minimalna kwota za przyjazd i drobną pracę zwykle zaczyna się od 150–200 zł, bo paliwo, czas i sprzęt też kosztują. Dokładną cenę najlepiej ustalić po zdjęciach albo krótkich oględzinach. Wycena jest bezpłatna.
-</p>
-
-</div>
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <thead><tr><th>Usługa</th><th>Cena od</th><th>Uwagi</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Koszenie małego ogrodu</strong></td><td>od 180–250 zł</td><td>Do ok. 300 m². Minimum za dojazd, paliwo i czas pracy.</td></tr>
+          <tr><td><strong>Koszenie działki</strong></td><td>od 250 zł</td><td>Większe działki wyceniane indywidualnie.</td></tr>
+          <tr><td><strong>Koszenie zaniedbanego terenu</strong></td><td>od 350 zł</td><td>Wysoka trawa, nierówny teren, samosiejki — cena zależy od roboty.</td></tr>
+          <tr><td><strong>Grabienie liści</strong></td><td>od 180 zł</td><td>Możliwe z workowaniem i przygotowaniem do wywozu.</td></tr>
+          <tr><td><strong>Sprzątanie garażu / pomieszczenia</strong></td><td>od 150 zł</td><td>Zależy od ilości rzeczy i zakresu pracy.</td></tr>
+          <tr><td><strong>Przycinanie krzewów</strong></td><td>od 150 zł</td><td>Drobne prace ogrodowe i porządkowe.</td></tr>
+          <tr><td><strong>Odśnieżanie podjazdu / chodnika</strong></td><td>od 120 zł</td><td>Jednorazowo lub regularnie po ustaleniu.</td></tr>
+          <tr><td><strong>Dojazd</strong></td><td>wliczany w wycenę</td><td>Dojazd zawsze jest brany pod uwagę przy ustalaniu ceny.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="price-note">Najprościej: wyślij zdjęcie terenu i lokalizację, a szybciej podamy sensowną cenę.</p>
+  </div>
 </section>
 
 <section class="section reveal" id="kalkulator">
-<div class="section-inner">
+  <div class="section-inner">
+    <div class="section-title">
+      <small>Szybka orientacja</small>
+      <h2>📊 Kalkulator wyceny</h2>
+      <p>To nie jest umowa krwią podpisana, tylko szybka orientacja. Dokładna cena po zdjęciach albo obejrzeniu terenu.</p>
+    </div>
 
-<div class="section-title">
-<small>Szybki przelicznik</small>
-<h2>📊 Kalkulator wyceny</h2>
-<p>To orientacyjna wycena, żeby klient mniej więcej wiedział, z czym się liczyć. Ostateczna cena zależy od terenu.</p>
-</div>
+    <div class="calculator">
+      <div class="calc-panel">
+        <div class="form-group"><label for="serviceType">Rodzaj usługi</label><select id="serviceType" onchange="calculatePrice()"><option value="koszenie">Koszenie normalnej trawy</option><option value="wysoka">Koszenie wysokiej trawy</option><option value="liscie">Grabienie liści</option><option value="garaz">Sprzątanie garażu / pomieszczenia</option><option value="odsniezanie">Odśnieżanie</option></select></div>
+        <div class="form-group"><label for="area">Powierzchnia / zakres pracy</label><input id="area" type="number" min="1" value="300" oninput="calculatePrice()"></div>
+        <div class="form-group"><label for="difficulty">Stan terenu</label><select id="difficulty" onchange="calculatePrice()"><option value="1">Normalny</option><option value="1.25">Trochę zaniedbany</option><option value="1.6">Mocno zaniedbany</option></select></div>
+        <div class="form-group"><label for="distance">Dojazd / logistyka</label><input id="distance" type="number" min="0" value="30" oninput="calculatePrice()"></div>
+      </div>
 
-<div class="calculator">
-<div class="calc-panel">
-<div class="form-group">
-<label for="serviceType">Rodzaj usługi</label>
-<select id="serviceType">
-<option value="koszenie">Koszenie trawy</option>
-<option value="wysoka">Koszenie wysokiej trawy</option>
-<option value="liscie">Grabienie liści</option>
-<option value="garaz">Sprzątanie garażu / pomieszczenia</option>
-<option value="odsniezanie">Odśnieżanie</option>
-</select>
-</div>
-
-<div class="form-group">
-<label for="area">Powierzchnia / wielkość pracy</label>
-<input id="area" type="number" min="1" value="500" placeholder="np. 500">
-</div>
-
-<div class="form-group">
-<label for="difficulty">Trudność terenu</label>
-<select id="difficulty">
-<option value="1">Łatwy teren</option>
-<option value="1.25">Średni teren</option>
-<option value="1.55">Trudny / zaniedbany teren</option>
-<option value="1.9">Bardzo trudny teren</option>
-</select>
-</div>
-
-<div class="form-group">
-<label for="distance">Dojazd</label>
-<select id="distance">
-<option value="0">Blisko / po drodze</option>
-<option value="30">Dalszy dojazd +30 zł</option>
-<option value="60">Dalszy dojazd +60 zł</option>
-</select>
-</div>
-
-<button class="btn btn-primary" type="button" onclick="calculatePrice()">Przelicz orientacyjnie</button>
-</div>
-
-<div class="calc-result">
-<small>Orientacyjna cena</small>
-<strong id="calcPrice">250–320 zł</strong>
-<p id="calcText">To szacunek. Najlepiej wyślij zdjęcie działki przez WhatsApp — wtedy łatwiej podać konkretną kwotę.</p>
-</div>
-</div>
-
-</div>
-</section>
-
-<section class="section reveal" id="formularz">
-<div class="section-inner">
-
-<div class="section-title">
-<small>Umów wycenę</small>
-<h2>📅 Formularz szybkiego kontaktu</h2>
-<p>Formularz otworzy gotową wiadomość SMS. Wpisujesz szczegóły, klikasz i wysyłasz — bez kont, logowania i cudów na kiju.</p>
-</div>
-
-<div class="form-card">
-<div class="form-group">
-<label for="name">Imię</label>
-<input id="name" type="text" placeholder="np. Jan">
-</div>
-
-<div class="form-group">
-<label for="location">Miejscowość</label>
-<input id="location" type="text" placeholder="np. Ełk, Augustów, Kalinowo">
-</div>
-
-<div class="form-group">
-<label for="formService">Co jest do zrobienia?</label>
-<select id="formService">
-<option>Koszenie trawy</option>
-<option>Koszenie wysokiej trawy</option>
-<option>Grabienie liści</option>
-<option>Odśnieżanie</option>
-<option>Sprzątanie garażu</option>
-<option>Regularna opieka nad działką</option>
-<option>Inne prace porządkowe</option>
-</select>
-</div>
-
-<div class="form-group">
-<label for="details">Szczegóły</label>
-<textarea id="details" placeholder="Napisz krótko: jaka powierzchnia, wysokość trawy, czy jest dojazd, kiedy pasuje termin..."></textarea>
-</div>
-
-<div class="hero-actions">
-<button class="btn btn-primary" type="button" onclick="sendSms()">📩 Wyślij SMS</button>
-<button class="btn btn-whatsapp" type="button" onclick="sendWhatsApp()">💬 Wyślij WhatsApp</button>
-</div>
-</div>
-
-</div>
-</section>
-
-<section class="section reveal" id="galeria">
-<div class="section-inner">
-
-<div class="section-title">
-<small>Efekt pracy</small>
-<h2>📸 Galeria usług</h2>
-<p>Kliknij zdjęcie, żeby powiększyć. Sekcja pokazuje zakres prac: koszenie, porządki sezonowe, sprzątanie terenu i zimowe utrzymanie posesji.</p>
-</div>
-
-<div class="gallery pro-gallery">
-<button class="gallery-item" type="button" onclick="openLightbox(this)" data-img="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1300&q=80" data-title="Koszenie trawnika"><span>🌿 Koszenie trawnika</span></button>
-<button class="gallery-item g2" type="button" onclick="openLightbox(this)" data-img="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1300&q=80" data-title="Porządkowanie działki"><span>🌳 Porządkowanie działki</span></button>
-<button class="gallery-item g3" type="button" onclick="openLightbox(this)" data-img="https://images.unsplash.com/photo-1599685315640-8c1bda61ee8a?auto=format&fit=crop&w=1300&q=80" data-title="Prace w ogrodzie"><span>🧹 Prace w ogrodzie</span></button>
-<button class="gallery-item g4" type="button" onclick="openLightbox(this)" data-img="https://images.unsplash.com/photo-1601134467661-3d775b999c8b?auto=format&fit=crop&w=1300&q=80" data-title="Odśnieżanie"><span>❄️ Odśnieżanie</span></button>
-</div>
-
-</div>
-</section>
-
-<section class="section reveal" id="opinie">
-<div class="section-inner">
-
-<div class="section-title">
-<small>Zaufanie</small>
-<h2>⭐ Podejście do klienta</h2>
-<p>Stawiamy na konkretną rozmowę, uczciwą wycenę i robotę wykonaną tak, żeby klient nie musiał poprawiać po poprawkach.</p>
-</div>
-
-<div class="testimonials">
-<div class="opinion">
-<div class="stars">📞</div>
-<h3>Szybki kontakt</h3>
-<p>Najpierw ustalamy zakres prac, termin i warunki. Bez zgadywania i bez cen z kosmosu.</p>
-</div>
-
-<div class="opinion">
-<div class="stars">💰</div>
-<h3>Wycena przed robotą</h3>
-<p>Cena zależy od powierzchni, wysokości trawy, dojazdu, zbierania odpadów i trudności terenu.</p>
-</div>
-
-<div class="opinion">
-<div class="stars">✅</div>
-<h3>Porządek po pracy</h3>
-<p>Po wykonaniu usługi teren ma być ogarnięty, a nie tylko „przejechany po łebkach”.</p>
-</div>
-</div>
-
-</div>
+      <div class="calc-result">
+        <small>Orientacyjna cena</small>
+        <strong id="calcPrice">0 zł</strong>
+        <p id="calcText">Wybierz usługę i wpisz dane, a kalkulator pokaże widełki.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="section reveal" id="obszar">
-<div class="section-inner">
+  <div class="section-inner">
+    <div class="section-title">
+      <small>Gdzie działamy?</small>
+      <h2>📍 Obszar usług</h2>
+      <p>Głównie Ełk, Augustów, Kalinowo i okolice. Przy każdej wycenie dojazd jest brany pod uwagę.</p>
+    </div>
 
-<div class="section-title">
-<small>Dojazd do klienta</small>
-<h2>📍 Obszar działania</h2>
-<p>Działamy głównie lokalnie: Ełk, Augustów, Kalinowo i okolice. Dalszy dojazd też możliwy po ustaleniu.</p>
-</div>
-
-<div class="map-box">
-<div class="map-info">
-<h3>🚗 Gdzie dojeżdżamy?</h3>
-<p>
-Najchętniej obsługujemy pobliskie miejscowości, bo wtedy robota jest szybka, a cena dla klienta normalna.
-Jeśli jesteś dalej — zadzwoń. Jak będzie się dało, dogadamy temat.
-</p>
-<div class="map-tags">
-<span>Ełk</span>
-<span>Augustów</span>
-<span>Kalinowo</span>
-<span>Prostki</span>
-<span>Rajgród</span>
-<span>okolice</span>
-</div>
-</div>
-
-<div class="map-frame">
-<iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=E%C5%82k%20August%C3%B3w%20Kalinowo&output=embed"></iframe>
-</div>
-</div>
-
-</div>
+    <div class="area-box">
+      <div class="area-info">
+        <h3>🚗 Dojazd do klienta</h3>
+        <p>Dojazd zawsze jest uwzględniany w wycenie. Dzięki temu cena jest jasna od początku i nie ma gadki typu „a jeszcze paliwo”.</p>
+        <div class="area-tags"><span>Ełk</span><span>Augustów</span><span>Kalinowo</span><span>Okolice</span><span>Działki prywatne</span></div>
+      </div>
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps?q=E%C5%82k%2C%20Polska&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="section reveal" id="onas">
-<div class="section-inner">
+  <div class="section-inner">
+    <div class="section-title">
+      <small>O nas</small>
+      <h2>🧹 Pora na Porządek</h2>
+      <p>Robimy prace porządkowe i ogrodowe na terenach prywatnych.</p>
+    </div>
 
-<div class="section-title">
-<small>O nas</small>
-<h2>👋 O Nas</h2>
-<p>Robimy porządki na terenach prywatnych. Prosto, uczciwie i dokładnie.</p>
-</div>
-
-<div class="about-box">
-<div class="about-photo" aria-label="Teren zielony po porządkach"></div>
-
-<div class="about-text">
-<p>Wykonujemy prace porządkowe i ogrodnicze na terenach prywatnych.</p>
-<p>Dbamy o dokładność wykonania, punktualność oraz uczciwe podejście do każdego zlecenia.</p>
-<p>Kosimy trawniki, sprzątamy działki, garaże oraz pomagamy przy pracach sezonowych przez cały rok.</p>
-<p>Możemy też regularnie zajmować się działką właściciela podczas jego nieobecności — koszenie, doglądanie i porządki według ustaleń.</p>
-<p>Naszym celem jest zostawić po sobie porządek i zadowolonego klienta.</p>
-</div>
-</div>
-
-</div>
+    <div class="about-box">
+      <div class="about-photo"></div>
+      <div class="about-text">
+        <p>Kosimy trawniki, sprzątamy działki, garaże i pomagamy przy pracach sezonowych.</p>
+        <p>Stawiamy na prosty kontakt, uczciwą wycenę i konkretną robotę.</p>
+        <p>Możliwa jest też regularna opieka nad działką: koszenie, doglądanie i porządki według ustaleń.</p>
+        <p>Cel jest prosty: po naszej pracy teren ma wyglądać lepiej, a klient ma mieć temat z głowy.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="section reveal">
-<div class="section-inner">
+  <div class="section-inner">
+    <div class="section-title">
+      <small>Jak to działa?</small>
+      <h2>🛠️ Prosty plan działania</h2>
+      <p>Bez kombinowania. Kontakt, wycena, termin i robota.</p>
+    </div>
 
-<div class="section-title">
-<small>Jak to działa?</small>
-<h2>🛠️ Prosty plan działania</h2>
-<p>Bez formularzy jak do urzędu. Dzwonisz, dogadujemy temat i robimy.</p>
-</div>
-
-<div class="process">
-<div class="step">
-<h3>Kontakt</h3>
-<p>Dzwonisz, piszesz SMS albo wysyłasz zdjęcia przez WhatsApp.</p>
-</div>
-
-<div class="step">
-<h3>Wycena</h3>
-<p>Ustalamy zakres pracy i orientacyjną cenę.</p>
-</div>
-
-<div class="step">
-<h3>Termin</h3>
-<p>Dogadujemy pasujący dzień i godzinę.</p>
-</div>
-
-<div class="step">
-<h3>Robota</h3>
-<p>Przyjeżdżamy, działamy i zostawiamy porządek.</p>
-</div>
-</div>
-
-</div>
+    <div class="process">
+      <div class="step"><h3>Kontakt</h3><p>Dzwonisz, piszesz SMS albo wysyłasz zdjęcia przez WhatsApp.</p></div>
+      <div class="step"><h3>Wycena</h3><p>Ustalamy zakres pracy, dojazd i orientacyjną cenę.</p></div>
+      <div class="step"><h3>Termin</h3><p>Dogadujemy pasujący dzień i godzinę.</p></div>
+      <div class="step"><h3>Robota</h3><p>Przyjeżdżamy, działamy i zostawiamy porządek.</p></div>
+    </div>
+  </div>
 </section>
 
-
 <section class="section reveal" id="faq">
-<div class="section-inner">
-<div class="section-title">
-<small>Pytania</small>
-<h2>🤖 FAQ — szybkie odpowiedzi</h2>
-<p>Najczęstsze tematy przed zleceniem. Kliknij pytanie i masz konkret.</p>
-</div>
-<div class="faq">
-<div class="faq-item"><button type="button">Czy cena z kalkulatora jest ostateczna?</button><div><p>Nie. Kalkulator pokazuje widełki. Ostateczna cena zależy od stanu terenu, wysokości trawy, dojazdu, zbierania i wywozu odpadów.</p></div></div>
-<div class="faq-item"><button type="button">Czy można zamówić regularną opiekę nad działką?</button><div><p>Tak. Możemy regularnie zajmować się działką podczas nieobecności właściciela: koszenie, porządki sezonowe, kontrola terenu i przygotowanie posesji do przyjazdu.</p></div></div>
-<div class="faq-item"><button type="button">Czy dojeżdżamy poza Ełk?</button><div><p>Tak, działamy w rejonie Ełku, Augustowa, Kalinowa i okolic. Przy dalszych trasach doliczany jest dojazd.</p></div></div>
-<div class="faq-item"><button type="button">Czy kosimy bardzo wysoką trawę?</button><div><p>Tak, ale taka praca jest wyceniana drożej, bo wymaga więcej czasu, paliwa i często kosy spalinowej zamiast zwykłej kosiarki.</p></div></div>
-</div>
-</div>
+  <div class="section-inner">
+    <div class="section-title">
+      <small>Pytania</small>
+      <h2>❓ FAQ</h2>
+      <p>Najczęstsze pytania przed zleceniem.</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-item"><button type="button">Czy cena z kalkulatora jest ostateczna?</button><div><p>Nie. Kalkulator pokazuje widełki. Ostateczna cena zależy od stanu terenu, wysokości trawy, dojazdu, zbierania i wywozu odpadów.</p></div></div>
+      <div class="faq-item"><button type="button">Czy można zamówić regularną opiekę nad działką?</button><div><p>Tak. Możemy regularnie zajmować się działką podczas nieobecności właściciela: koszenie, porządki sezonowe, kontrola terenu i przygotowanie posesji do przyjazdu.</p></div></div>
+      <div class="faq-item"><button type="button">Czy dojeżdżamy do klienta?</button><div><p>Tak, dojeżdżamy do klienta. Dojazd jest zawsze uwzględniany w wycenie, niezależnie od miejscowości. Działamy głównie w rejonie Ełku, Augustowa, Kalinowa i okolic.</p></div></div>
+      <div class="faq-item"><button type="button">Czy kosimy bardzo wysoką trawę?</button><div><p>Tak, ale taka praca jest wyceniana drożej, bo wymaga więcej czasu, paliwa i często kosy spalinowej zamiast zwykłej kosiarki.</p></div></div>
+    </div>
+  </div>
 </section>
 
 <section class="section reveal" id="kontakt">
-<div class="section-inner">
-
-<div class="contact-card">
-<h2>📞 Kontakt</h2>
-
-<p>
-<strong style="color:white;font-size:1.35rem;">Pora na Porządek</strong><br><br>
-Masz działkę do wykoszenia?<br>
-Potrzebujesz odśnieżania, sprzątania albo regularnej opieki nad posesją?<br><br>
-Zadzwoń, napisz SMS albo wyślij zdjęcia przez WhatsApp.
-</p>
-
-<a href="tel:797893001" class="big-phone">📞 797 893 001</a>
-
-<div class="contact-buttons">
-<a href="https://wa.me/48797893001?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zapyta%C4%87%20o%20wycen%C4%99%20us%C5%82ugi." target="_blank" rel="noopener" class="btn btn-whatsapp">💬 WhatsApp</a>
-<a href="https://m.me/poranaporzadek" target="_blank" rel="noopener" class="btn btn-messenger">💬 Messenger</a>
-<a href="#formularz" class="btn btn-secondary">📅 Umów wycenę</a>
-</div>
-
-<div class="notice">
-Strona ma charakter informacyjny.<br>
-Usługi wykonywane prywatnie.
-</div>
-</div>
-
-</div>
+  <div class="section-inner">
+    <div class="contact-card">
+      <h2>📞 Kontakt</h2>
+      <p><strong style="color:white;font-size:1.3rem;">Pora na Porządek</strong><br><br>Masz działkę do wykoszenia, garaż do ogarnięcia albo podjazd do odśnieżenia?<br>Najlepiej zadzwoń albo wyślij zdjęcia przez WhatsApp.</p>
+      <a href="tel:797893001" class="big-phone">📞 797 893 001</a>
+      <div class="contact-buttons">
+        <a href="https://wa.me/48797893001?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zapyta%C4%87%20o%20wycen%C4%99%20us%C5%82ugi." target="_blank" rel="noopener" class="btn btn-whatsapp">💬 WhatsApp</a>
+        <a href="#kalkulator" class="btn btn-secondary">📊 Sprawdź orientacyjną cenę</a>
+      </div>
+      <div class="notice">Strona ma charakter informacyjny.<br>Usługi wykonywane prywatnie.</div>
+    </div>
+  </div>
 </section>
-
 </main>
 
 <div class="floating-actions">
-<a href="tel:797893001" class="float-call">📞 Zadzwoń</a>
-<a href="https://wa.me/48797893001?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zapyta%C4%87%20o%20wycen%C4%99%20us%C5%82ugi." target="_blank" rel="noopener" class="float-whatsapp">💬 WhatsApp</a>
+  <a href="tel:797893001" class="float-call">📞 Zadzwoń</a>
+  <a href="https://wa.me/48797893001?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zapyta%C4%87%20o%20wycen%C4%99%20us%C5%82ugi." target="_blank" rel="noopener" class="float-whatsapp">💬 WhatsApp</a>
 </div>
-
-
-<div class="lightbox" id="lightbox" onclick="closeLightbox()"><div onclick="event.stopPropagation()"><button type="button" onclick="closeLightbox()">×</button><img id="lightboxImg" alt="Galeria usług"><strong id="lightboxTitle"></strong></div></div>
-
-<div class="callback-modal" id="callbackModal" onclick="closeCallback()"><div class="callback-box" onclick="event.stopPropagation()"><button class="modal-close" type="button" onclick="closeCallback()">×</button><h2>📞 Oddzwonimy</h2><p>Zostaw numer i krótki opis. Wiadomość otworzy się jako SMS — wystarczy wysłać.</p><input id="callbackName" placeholder="Imię"><input id="callbackPhone" placeholder="Numer telefonu"><textarea id="callbackMsg" placeholder="Co jest do zrobienia? np. koszenie 500 m², wysoka trawa, okolice Ełku"></textarea><button class="btn btn-primary" type="button" onclick="sendCallbackSms()">📩 Wyślij prośbę o kontakt</button></div></div>
-
-<div class="quick-contact"><a href="tel:797893001">📞</a><a href="https://wa.me/48797893001?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zapyta%C4%87%20o%20wycen%C4%99%20us%C5%82ugi." target="_blank" rel="noopener">💬</a><button type="button" onclick="openCallback()">☎️</button></div>
 
 <footer>
-<strong>🧹 Pora na Porządek</strong>
-<p>
-🌿 Koszenie trawy • 🍂 Grabienie liści • ❄️ Odśnieżanie<br>
-🧹 Sprzątanie garaży • 🌳 Tereny zielone • 🏡 Opieka nad działką
-</p>
-
-<p style="margin-top:14px;">📞 797 893 001</p>
-
-<div class="notice">
-Nie jesteśmy zarejestrowaną firmą — usługi wykonywane prywatnie.
-</div>
-
-<p style="margin-top:22px;">© 2026 Pora na Porządek</p>
+  <strong>🧹 Pora na Porządek</strong>
+  <p>🌿 Koszenie trawy • 🍂 Grabienie liści • ❄️ Odśnieżanie<br>🧹 Sprzątanie garaży • 🌳 Tereny zielone • 🏡 Opieka nad działką</p>
+  <p style="margin-top:14px;">📞 797 893 001</p>
+  <div class="notice">Nie jesteśmy zarejestrowaną firmą — usługi wykonywane prywatnie.</div>
+  <p style="margin-top:22px;">© 2026 Pora na Porządek</p>
 </footer>
 
 <script>
-const topbar = document.getElementById("topbar");
 const nav = document.getElementById("nav");
 const mobileMenu = document.getElementById("mobileMenu");
 
-window.addEventListener("scroll", () => {
-if(window.scrollY > 30){
-topbar.classList.add("scrolled");
-}else{
-topbar.classList.remove("scrolled");
-}
-});
-
 mobileMenu.addEventListener("click", () => {
-nav.classList.toggle("open");
+  nav.classList.toggle("open");
 });
 
 document.querySelectorAll(".nav a").forEach(link => {
-link.addEventListener("click", () => nav.classList.remove("open"));
+  link.addEventListener("click", () => nav.classList.remove("open"));
 });
 
 const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if(entry.isIntersecting){
-entry.target.classList.add("active");
-}
-});
-},{
-threshold:0.14
-});
+  entries.forEach(entry => {
+    if(entry.isIntersecting){ entry.target.classList.add("active"); }
+  });
+},{ threshold:0.14 });
 
-document.querySelectorAll(".reveal").forEach(el => {
-observer.observe(el);
-});
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
 function calculatePrice(){
-const service = document.getElementById("serviceType").value;
-const area = Math.max(1, Number(document.getElementById("area").value || 1));
-const difficulty = Number(document.getElementById("difficulty").value);
-const distance = Number(document.getElementById("distance").value);
+  const service = document.getElementById("serviceType").value;
+  const area = Math.max(1, Number(document.getElementById("area").value || 1));
+  const difficulty = Number(document.getElementById("difficulty").value);
+  const distance = Math.max(0, Number(document.getElementById("distance").value || 0));
 
-let base = 0;
-let rate = 0;
+  let base = 0;
+  let rate = 0;
 
-if(service === "koszenie"){
-base = 190;
-rate = 0.20;
-}
-if(service === "wysoka"){
-base = 300;
-rate = 0.45;
-}
-if(service === "liscie"){
-base = 180;
-rate = 0.18;
-}
-if(service === "garaz"){
-base = 180;
-rate = 0.25;
-}
-if(service === "odsniezanie"){
-base = 120;
-rate = 0.15;
-}
+  if(service === "koszenie"){ base = 190; rate = 0.20; }
+  if(service === "wysoka"){ base = 300; rate = 0.45; }
+  if(service === "liscie"){ base = 180; rate = 0.18; }
+  if(service === "garaz"){ base = 180; rate = 0.25; }
+  if(service === "odsniezanie"){ base = 120; rate = 0.15; }
 
-let price = Math.round((base + area * rate) * difficulty + distance);
-let minimum = service === "odsniezanie" ? 120 : 180;
-let min = Math.max(minimum, Math.round(price * 0.95));
-let max = Math.round(price * 1.25);
+  let price = Math.round((base + area * rate) * difficulty + distance);
+  let minimum = service === "odsniezanie" ? 120 : 180;
+  let min = Math.max(minimum, Math.round(price * 0.95));
+  let max = Math.round(price * 1.25);
 
-document.getElementById("calcPrice").textContent = min + "–" + max + " zł";
-document.getElementById("calcText").textContent = "To orientacyjna kwota. Dokładna cena zależy od dojazdu, dostępu do terenu, wysokości trawy/śniegu i zakresu pracy. Kalkulator nie schodzi do śmiesznych stawek, bo sprzęt i paliwo nie działają na dobre słowo.";
-}
-
-function buildMessage(){
-const name = document.getElementById("name").value || "brak";
-const location = document.getElementById("location").value || "brak";
-const service = document.getElementById("formService").value;
-const details = document.getElementById("details").value || "brak szczegółów";
-
-return "Dzień dobry, chcę umówić wycenę.%0A" +
-"Imię: " + encodeURIComponent(name) + "%0A" +
-"Miejscowość: " + encodeURIComponent(location) + "%0A" +
-"Usługa: " + encodeURIComponent(service) + "%0A" +
-"Szczegóły: " + encodeURIComponent(details);
-}
-
-function sendSms(){
-window.location.href = "sms:797893001?body=" + buildMessage();
-}
-
-function sendWhatsApp(){
-window.open("https://wa.me/48797893001?text=" + buildMessage(), "_blank");
+  document.getElementById("calcPrice").textContent = min + "–" + max + " zł";
+  document.getElementById("calcText").textContent = "To orientacyjna kwota. Dokładna cena zależy od dojazdu, dostępu do terenu, wysokości trawy/śniegu i zakresu pracy.";
 }
 
 calculatePrice();
 
-window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader')?.classList.add('hide'),450)});
-function setSeason(season){document.body.classList.remove('season-summer','season-autumn','season-winter'); if(season==='summer')document.body.classList.add('season-summer'); if(season==='autumn')document.body.classList.add('season-autumn'); if(season==='winter')document.body.classList.add('season-winter');}
-function openLightbox(el){const box=document.getElementById('lightbox');document.getElementById('lightboxImg').src=el.dataset.img;document.getElementById('lightboxTitle').textContent=el.dataset.title;box.classList.add('active')}
-function closeLightbox(){document.getElementById('lightbox')?.classList.remove('active')}
-function openCallback(){document.getElementById('callbackModal')?.classList.add('active')}
-function closeCallback(){document.getElementById('callbackModal')?.classList.remove('active')}
-function sendCallbackSms(){const n=document.getElementById('callbackName').value.trim();const ph=document.getElementById('callbackPhone').value.trim();const m=document.getElementById('callbackMsg').value.trim();const txt=`Prośba o kontakt. Imię: ${n}. Telefon: ${ph}. Opis: ${m}`;window.location.href='sms:797893001?body='+encodeURIComponent(txt)}
-document.querySelectorAll('.faq-item button').forEach(b=>b.addEventListener('click',()=>b.parentElement.classList.toggle('active')));
-function showPrices(btn){document.querySelectorAll('.price-accordion button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelector('.price-table-wrap')?.classList.add('active')}
-
+document.querySelectorAll('.faq-item button').forEach(button => {
+  button.addEventListener('click', () => {
+    button.parentElement.classList.toggle('active');
+  });
+});
 </script>
-
 </body>
 </html>
