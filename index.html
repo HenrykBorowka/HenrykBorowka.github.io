@@ -1192,10 +1192,57 @@ font-size:.9rem;
 
 footer{padding-bottom:96px;}
 }
+
+/* === V4 efekt wow === */
+.preloader{position:fixed;inset:0;z-index:5000;background:#050805;display:grid;place-items:center;transition:.6s ease;}
+.preloader.hide{opacity:0;visibility:hidden;}
+.preloader div{text-align:center;animation:prePulse 1.3s infinite ease-in-out;}
+.preloader img{width:98px;height:98px;border-radius:26px;box-shadow:0 0 45px rgba(74,222,128,.45);display:block;margin:0 auto 18px;}
+.preloader strong{color:#eaffef;font-weight:950;}
+@keyframes prePulse{50%{transform:scale(1.06)}}
+.grass-bg{position:fixed;left:0;right:0;bottom:0;height:95px;z-index:1;pointer-events:none;opacity:.28;background:repeating-linear-gradient(75deg, transparent 0 9px, rgba(74,222,128,.38) 10px 12px, transparent 13px 20px);filter:blur(.2px);animation:grassMove 5s infinite ease-in-out;}
+@keyframes grassMove{50%{transform:skewX(-3deg) translateX(8px)}}
+.season-switch{position:fixed;left:18px;bottom:22px;z-index:1001;display:flex;gap:8px;background:rgba(5,10,6,.72);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(14px);padding:8px;border-radius:999px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.season-switch button{width:38px;height:38px;border:0;border-radius:999px;background:rgba(255,255,255,.08);cursor:pointer;font-size:1.1rem;transition:.2s}
+.season-switch button:hover{transform:translateY(-3px);background:rgba(74,222,128,.22)}
+body.season-summer{--green:#facc15;--green2:#22c55e;--gold:#f97316;}
+body.season-autumn{--green:#f97316;--green2:#ca8a04;--gold:#fde68a;}
+body.season-winter{--green:#93c5fd;--green2:#38bdf8;--gold:#e0f2fe;}
+.hero-video{position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,15,7,.72),rgba(4,15,7,.38)),url('https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1800&q=80');background-size:cover;background-position:center;opacity:.38;animation:slowZoom 18s infinite alternate ease-in-out;}
+@keyframes slowZoom{from{transform:scale(1)}to{transform:scale(1.08)}}
+.card .icon{filter:drop-shadow(0 0 16px rgba(74,222,128,.25));animation:mowerFloat 3.5s infinite ease-in-out;}
+@keyframes mowerFloat{50%{transform:translateY(-5px) rotate(-2deg)}}
+.pro-gallery{grid-template-columns:repeat(4,1fr)}
+.gallery-item{min-height:270px;border:1px solid rgba(255,255,255,.1);border-radius:28px;overflow:hidden;cursor:pointer;background-image:linear-gradient(to top,rgba(0,0,0,.72),transparent 55%),url('https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=900&q=75');background-size:cover;background-position:center;box-shadow:0 18px 52px rgba(0,0,0,.26);transition:.28s;text-align:left;padding:18px;display:flex;align-items:flex-end;}
+.gallery-item.g2{background-image:linear-gradient(to top,rgba(0,0,0,.72),transparent 55%),url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=900&q=75')}
+.gallery-item.g3{background-image:linear-gradient(to top,rgba(0,0,0,.72),transparent 55%),url('https://images.unsplash.com/photo-1599685315640-8c1bda61ee8a?auto=format&fit=crop&w=900&q=75')}
+.gallery-item.g4{background-image:linear-gradient(to top,rgba(0,0,0,.72),transparent 55%),url('https://images.unsplash.com/photo-1601134467661-3d775b999c8b?auto=format&fit=crop&w=900&q=75')}
+.gallery-item:hover{transform:translateY(-8px) scale(1.02);border-color:rgba(74,222,128,.45)}
+.gallery-item span{font-weight:950;color:white;font-size:1.08rem;text-shadow:0 3px 14px rgba(0,0,0,.8)}
+.lightbox,.callback-modal{position:fixed;inset:0;z-index:4000;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;padding:22px;backdrop-filter:blur(8px)}
+.lightbox.active,.callback-modal.active{display:flex}
+.lightbox>div,.callback-box{max-width:920px;width:min(920px,100%);background:#071009;border:1px solid rgba(255,255,255,.13);border-radius:28px;padding:18px;box-shadow:0 30px 90px rgba(0,0,0,.6);position:relative}
+.lightbox img{width:100%;max-height:72vh;object-fit:cover;border-radius:20px;display:block;margin-bottom:14px}
+.lightbox button,.modal-close{position:absolute;right:14px;top:14px;width:42px;height:42px;border:0;border-radius:999px;background:rgba(0,0,0,.62);color:white;font-size:1.6rem;cursor:pointer}
+#lightboxTitle{font-size:1.25rem;color:white}
+.faq{max-width:920px;margin:0 auto;display:grid;gap:14px}
+.faq-item{border:1px solid rgba(255,255,255,.1);border-radius:20px;background:rgba(255,255,255,.045);overflow:hidden}
+.faq-item button{width:100%;padding:20px 22px;text-align:left;background:transparent;border:0;color:white;font-weight:950;font-size:1.05rem;cursor:pointer}
+.faq-item div{max-height:0;overflow:hidden;transition:.3s ease}
+.faq-item.active div{max-height:220px}
+.faq-item p{padding:0 22px 20px;color:var(--muted);line-height:1.8}
+.callback-box h2{font-size:2rem;margin-bottom:10px}.callback-box p{color:var(--muted);line-height:1.7;margin-bottom:18px}.callback-box input,.callback-box textarea{width:100%;margin-bottom:12px;padding:15px 16px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:white;font:inherit}.callback-box textarea{min-height:115px;resize:vertical}.quick-contact{position:fixed;right:18px;bottom:22px;z-index:1200;display:flex;flex-direction:column;gap:10px}.quick-contact a,.quick-contact button{width:54px;height:54px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(135deg,var(--green),var(--green2));display:grid;place-items:center;text-decoration:none;color:#041008;font-size:1.35rem;box-shadow:0 15px 35px rgba(74,222,128,.32);cursor:pointer}.price-table-wrap{display:none}.price-table-wrap.active{display:block}.price-accordion{display:grid;gap:12px;margin-bottom:18px}.price-accordion button{padding:16px 18px;border-radius:18px;border:1px solid rgba(74,222,128,.2);background:rgba(74,222,128,.09);color:white;font-weight:950;cursor:pointer;text-align:left}
+@media(max-width:980px){.pro-gallery{grid-template-columns:repeat(2,1fr)}.quick-contact{right:12px;bottom:90px}.season-switch{left:10px;bottom:12px}}
+@media(max-width:620px){.pro-gallery{grid-template-columns:1fr}.gallery-item{min-height:230px}.season-switch{display:none}.quick-contact{display:none}.hero-video{opacity:.28}}
+
 </style>
 </head>
 
 <body>
+
+<div class="preloader" id="preloader"><div><img src="nasze%20logo.png" alt="Pora na Porządek"><strong>Ładowanie porządku...</strong></div></div>
+<div class="grass-bg" aria-hidden="true"></div>
+<div class="season-switch" aria-label="Zmień klimat strony"><button type="button" onclick="setSeason('spring')">🌱</button><button type="button" onclick="setSeason('summer')">☀️</button><button type="button" onclick="setSeason('autumn')">🍂</button><button type="button" onclick="setSeason('winter')">❄️</button></div>
 
 <nav class="topbar" id="topbar">
 <a href="#start" class="brand">
@@ -1212,11 +1259,13 @@ footer{padding-bottom:96px;}
 <a href="#kalkulator">Kalkulator</a>
 <a href="#galeria">Galeria</a>
 <a href="#obszar">Obszar</a>
+<a href="#faq">FAQ</a>
 <a href="#kontakt" class="nav-call">📞 797 893 001</a>
 </div>
 </nav>
 
 <header class="hero" id="start">
+<div class="hero-video" aria-hidden="true"></div>
 <div class="hero-wrap">
 
 <div class="hero-content">
@@ -1236,6 +1285,7 @@ Krótko mówiąc: Ty odpoczywasz, teren nie zarasta jak dżungla po deszczu.
 <a href="tel:797893001" class="btn btn-primary">📞 Zadzwoń — 797 893 001</a>
 <a href="https://wa.me/48797893001?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zapyta%C4%87%20o%20wycen%C4%99%20us%C5%82ugi." target="_blank" rel="noopener" class="btn btn-whatsapp">💬 WhatsApp</a>
 <a href="#kalkulator" class="btn btn-secondary">📊 Szybka wycena</a>
+<button class="btn btn-secondary" type="button" onclick="openCallback()">📞 Oddzwońcie do mnie</button>
 </div>
 
 <div class="hero-badges">
@@ -1437,7 +1487,8 @@ kosić, doglądać, sprzątać, przygotowywać teren przed przyjazdem i pilnowa�
 <p>Ceny są orientacyjne, bo każda działka jest inna. Inaczej liczy się równy trawnik, a inaczej metr trawy po pas i krzaki jak w Jumanji.</p>
 </div>
 
-<div class="price-table-wrap">
+<div class="price-accordion"><button type="button" onclick="showPrices(this)">🌿 Koszenie i ogrody</button><button type="button" onclick="showPrices(this)">🍂 Prace sezonowe</button><button type="button" onclick="showPrices(this)">❄️ Zima i odśnieżanie</button></div>
+<div class="price-table-wrap active">
 <table class="price-table">
 <thead>
 <tr>
@@ -1614,45 +1665,15 @@ kosić, doglądać, sprzątać, przygotowywać teren przed przyjazdem i pilnowa�
 
 <div class="section-title">
 <small>Efekt pracy</small>
-<h2>📸 Galeria przed i po</h2>
-<p>Tu możesz później podmienić zdjęcia na swoje realizacje. Takie zdjęcia robią robotę lepiej niż 1000 zdań reklamy.</p>
+<h2>📸 Galeria usług</h2>
+<p>Kliknij zdjęcie, żeby powiększyć. Sekcja pokazuje zakres prac: koszenie, porządki sezonowe, sprzątanie terenu i zimowe utrzymanie posesji.</p>
 </div>
 
-<div class="gallery">
-
-<div class="before-after">
-<div class="ba-img">
-<div class="ba-half ba-before before1"></div>
-<div class="ba-half ba-after after1"></div>
-</div>
-<div class="ba-caption">
-<h3>Koszenie działki</h3>
-<p>Zarośnięty teren zmieniony w normalną działkę do użytkowania.</p>
-</div>
-</div>
-
-<div class="before-after">
-<div class="ba-img">
-<div class="ba-half ba-before before2"></div>
-<div class="ba-half ba-after after2"></div>
-</div>
-<div class="ba-caption">
-<h3>Porządki przy domu</h3>
-<p>Sprzątanie terenu zielonego i przygotowanie posesji do sezonu.</p>
-</div>
-</div>
-
-<div class="before-after">
-<div class="ba-img">
-<div class="ba-half ba-before before3"></div>
-<div class="ba-half ba-after after3"></div>
-</div>
-<div class="ba-caption">
-<h3>Jesienne porządki</h3>
-<p>Grabienie liści, ogarnięcie ścieżek i podstawowe prace sezonowe.</p>
-</div>
-</div>
-
+<div class="gallery pro-gallery">
+<button class="gallery-item" type="button" onclick="openLightbox(this)" data-img="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1300&q=80" data-title="Koszenie trawnika"><span>🌿 Koszenie trawnika</span></button>
+<button class="gallery-item g2" type="button" onclick="openLightbox(this)" data-img="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1300&q=80" data-title="Porządkowanie działki"><span>🌳 Porządkowanie działki</span></button>
+<button class="gallery-item g3" type="button" onclick="openLightbox(this)" data-img="https://images.unsplash.com/photo-1599685315640-8c1bda61ee8a?auto=format&fit=crop&w=1300&q=80" data-title="Prace w ogrodzie"><span>🧹 Prace w ogrodzie</span></button>
+<button class="gallery-item g4" type="button" onclick="openLightbox(this)" data-img="https://images.unsplash.com/photo-1601134467661-3d775b999c8b?auto=format&fit=crop&w=1300&q=80" data-title="Odśnieżanie"><span>❄️ Odśnieżanie</span></button>
 </div>
 
 </div>
@@ -1663,27 +1684,27 @@ kosić, doglądać, sprzątać, przygotowywać teren przed przyjazdem i pilnowa�
 
 <div class="section-title">
 <small>Zaufanie</small>
-<h2>⭐ Opinie klientów</h2>
-<p>Na start przykładowe opinie — później warto podmienić na prawdziwe komentarze klientów z Facebooka albo wiadomości.</p>
+<h2>⭐ Podejście do klienta</h2>
+<p>Stawiamy na konkretną rozmowę, uczciwą wycenę i robotę wykonaną tak, żeby klient nie musiał poprawiać po poprawkach.</p>
 </div>
 
 <div class="testimonials">
 <div class="opinion">
-<div class="stars">★★★★★</div>
-<p>„Szybki kontakt, normalna cena i działka wykoszona dokładnie. Bez kombinowania.”</p>
-<strong>Klient z okolic Ełku</strong>
+<div class="stars">📞</div>
+<h3>Szybki kontakt</h3>
+<p>Najpierw ustalamy zakres prac, termin i warunki. Bez zgadywania i bez cen z kosmosu.</p>
 </div>
 
 <div class="opinion">
-<div class="stars">★★★★★</div>
-<p>„Działka była mocno zarośnięta, a po robocie wyglądała jak trzeba. Polecam.”</p>
-<strong>Właściciel działki</strong>
+<div class="stars">💰</div>
+<h3>Wycena przed robotą</h3>
+<p>Cena zależy od powierzchni, wysokości trawy, dojazdu, zbierania odpadów i trudności terenu.</p>
 </div>
 
 <div class="opinion">
-<div class="stars">★★★★★</div>
-<p>„Fajnie, że można dogadać regularną opiekę. Przyjeżdżam i nie muszę zaczynać od walki z trawą.”</p>
-<strong>Klient sezonowy</strong>
+<div class="stars">✅</div>
+<h3>Porządek po pracy</h3>
+<p>Po wykonaniu usługi teren ma być ogarnięty, a nie tylko „przejechany po łebkach”.</p>
 </div>
 </div>
 
@@ -1782,6 +1803,23 @@ Jeśli jesteś dalej — zadzwoń. Jak będzie się dało, dogadamy temat.
 </div>
 </section>
 
+
+<section class="section reveal" id="faq">
+<div class="section-inner">
+<div class="section-title">
+<small>Pytania</small>
+<h2>🤖 FAQ — szybkie odpowiedzi</h2>
+<p>Najczęstsze tematy przed zleceniem. Kliknij pytanie i masz konkret.</p>
+</div>
+<div class="faq">
+<div class="faq-item"><button type="button">Czy cena z kalkulatora jest ostateczna?</button><div><p>Nie. Kalkulator pokazuje widełki. Ostateczna cena zależy od stanu terenu, wysokości trawy, dojazdu, zbierania i wywozu odpadów.</p></div></div>
+<div class="faq-item"><button type="button">Czy można zamówić regularną opiekę nad działką?</button><div><p>Tak. Możemy regularnie zajmować się działką podczas nieobecności właściciela: koszenie, porządki sezonowe, kontrola terenu i przygotowanie posesji do przyjazdu.</p></div></div>
+<div class="faq-item"><button type="button">Czy dojeżdżamy poza Ełk?</button><div><p>Tak, działamy w rejonie Ełku, Augustowa, Kalinowa i okolic. Przy dalszych trasach doliczany jest dojazd.</p></div></div>
+<div class="faq-item"><button type="button">Czy kosimy bardzo wysoką trawę?</button><div><p>Tak, ale taka praca jest wyceniana drożej, bo wymaga więcej czasu, paliwa i często kosy spalinowej zamiast zwykłej kosiarki.</p></div></div>
+</div>
+</div>
+</section>
+
 <section class="section reveal" id="kontakt">
 <div class="section-inner">
 
@@ -1818,6 +1856,13 @@ Usługi wykonywane prywatnie.
 <a href="tel:797893001" class="float-call">📞 Zadzwoń</a>
 <a href="https://wa.me/48797893001?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zapyta%C4%87%20o%20wycen%C4%99%20us%C5%82ugi." target="_blank" rel="noopener" class="float-whatsapp">💬 WhatsApp</a>
 </div>
+
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()"><div onclick="event.stopPropagation()"><button type="button" onclick="closeLightbox()">×</button><img id="lightboxImg" alt="Galeria usług"><strong id="lightboxTitle"></strong></div></div>
+
+<div class="callback-modal" id="callbackModal" onclick="closeCallback()"><div class="callback-box" onclick="event.stopPropagation()"><button class="modal-close" type="button" onclick="closeCallback()">×</button><h2>📞 Oddzwonimy</h2><p>Zostaw numer i krótki opis. Wiadomość otworzy się jako SMS — wystarczy wysłać.</p><input id="callbackName" placeholder="Imię"><input id="callbackPhone" placeholder="Numer telefonu"><textarea id="callbackMsg" placeholder="Co jest do zrobienia? np. koszenie 500 m², wysoka trawa, okolice Ełku"></textarea><button class="btn btn-primary" type="button" onclick="sendCallbackSms()">📩 Wyślij prośbę o kontakt</button></div></div>
+
+<div class="quick-contact"><a href="tel:797893001">📞</a><a href="https://wa.me/48797893001?text=Dzie%C5%84%20dobry%2C%20chc%C4%99%20zapyta%C4%87%20o%20wycen%C4%99%20us%C5%82ugi." target="_blank" rel="noopener">💬</a><button type="button" onclick="openCallback()">☎️</button></div>
 
 <footer>
 <strong>🧹 Pora na Porządek</strong>
@@ -1931,6 +1976,17 @@ window.open("https://wa.me/48797893001?text=" + buildMessage(), "_blank");
 }
 
 calculatePrice();
+
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader')?.classList.add('hide'),450)});
+function setSeason(season){document.body.classList.remove('season-summer','season-autumn','season-winter'); if(season==='summer')document.body.classList.add('season-summer'); if(season==='autumn')document.body.classList.add('season-autumn'); if(season==='winter')document.body.classList.add('season-winter');}
+function openLightbox(el){const box=document.getElementById('lightbox');document.getElementById('lightboxImg').src=el.dataset.img;document.getElementById('lightboxTitle').textContent=el.dataset.title;box.classList.add('active')}
+function closeLightbox(){document.getElementById('lightbox')?.classList.remove('active')}
+function openCallback(){document.getElementById('callbackModal')?.classList.add('active')}
+function closeCallback(){document.getElementById('callbackModal')?.classList.remove('active')}
+function sendCallbackSms(){const n=document.getElementById('callbackName').value.trim();const ph=document.getElementById('callbackPhone').value.trim();const m=document.getElementById('callbackMsg').value.trim();const txt=`Prośba o kontakt. Imię: ${n}. Telefon: ${ph}. Opis: ${m}`;window.location.href='sms:797893001?body='+encodeURIComponent(txt)}
+document.querySelectorAll('.faq-item button').forEach(b=>b.addEventListener('click',()=>b.parentElement.classList.toggle('active')));
+function showPrices(btn){document.querySelectorAll('.price-accordion button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelector('.price-table-wrap')?.classList.add('active')}
+
 </script>
 
 </body>
